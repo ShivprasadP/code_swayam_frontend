@@ -1,6 +1,6 @@
 import React from "react";
 
-
+// EventTable.js
 import { useNavigate } from "react-router-dom";
 
 const EventTable = ({ events }) => {
@@ -13,7 +13,7 @@ const EventTable = ({ events }) => {
       <div className="overflow-x-auto">
         <table className="w-full border-collapse bg-white shadow-lg rounded-lg">
           <thead>
-            <tr className="bg-gradient-to-b from-amber-500 to-orange-400 text-white">
+            <tr className="bg-gradient-to-b from-amber-400 to-orange-400 text-white">
               <th className="p-3">ID</th>
               <th className="p-3">Date</th>
               <th className="p-3">Category</th>
