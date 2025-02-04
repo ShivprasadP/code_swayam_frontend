@@ -3,11 +3,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./component/Header";
 import Contactus from "./component/contactus";
 import Aboutus from "./component/aboutus";
-import Home from "./component/home";
+// import Home from "./component/home";
 import Footer from "./component/footer";
 import EventRouting from "./component/Events/EventRouting";
 import Practice from "./component/Practice/Practice";
 
+// import Practice from "./component/Practice/Practice"
+// import EventRouting from "./component/Events/EventRouting"
+import Ranking from "./component/Ranking/Ranking"
+import ranks from './component/Ranking/ranks';
 const App = () => {
   return (
     <Router>
