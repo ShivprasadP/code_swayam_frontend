@@ -6,14 +6,15 @@ const Header = () => {
       <div className="flex items-center space-x-6 ml-8">
         <img src="logo4.png" alt="Logo" className="w-40 h-auto mt-[45px]" />
         <ul className="flex space-x-8 text-lg font-medium text-gray-700">
-          <li className="hover:text-amber-500 transition-all duration-300 ml-[45px] cursor-pointer">
-            <a href="#aboutUS">About Us</a>
-          </li>
-          <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+          
+          <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[40px]">
             <a href="#home">Home</a>
           </li>
-          <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
-            <a href="#contact">Contact Us</a>
+          <li className="hover:text-amber-500 transition-all duration-300 ml-[30px] cursor-pointer">
+            <a href="#aboutUS">About Us</a>
+          </li>
+          <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+            <a href="#footer">Contact Us</a>
           </li>
         </ul>
       </div>
