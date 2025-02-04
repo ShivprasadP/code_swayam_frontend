@@ -80,27 +80,6 @@ const Slideshow = ({ cards, direction }) => {
           </div>
         </div>
       </div>
-
-      {/* Navigation arrows */}
-      <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10">
-        <button
-          className="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-600 transition-all duration-300"
-          onClick={() => {
-            setIsTransitioning(true);
-            setCurrentIndex((prevIndex) => prevIndex - 1);
-          }}
-        >
-          &#8592;
-        </button>
-      </div>
-      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10">
-        <button
-          className="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-600 transition-all duration-300"
-          onClick={handleNext}
-        >
-          &#8594;
-        </button>
-      </div>
     </div>
   );
 };

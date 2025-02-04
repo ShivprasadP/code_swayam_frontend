@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Slideshow from "./Slideshow";
+import Header from "./Header";
+import MultiRoleLogin from "./MultiRoleLogin";
 
 const Home = () => {
-  const [numCards] = useState(5);
   const [leftDirection] = useState("left");
-  const [rightDirection] = useState("right");
+  const [showLogin, setShowLogin] = useState(false);
 
   const cards1 = [
     { title: "Card 1", description: "Description for Card 1" },
@@ -22,8 +23,17 @@ const Home = () => {
     { title: "Card 10", description: "Description for Card 10" },
   ];
 
+  const handleLoginClick = () => {
+    setShowLogin(true);
+  };
+
+  const handleCloseLogin = () => {
+    setShowLogin(false);
+  };
+
   return (
     <div id="home" className="container mx-auto p-4">
+      <Header onLoginClick={handleLoginClick} />
       <div className="mb-12">
         <h2 className="text-2xl font-semibold text-center mb-4 mt-[100px]">
           Events
@@ -35,6 +45,8 @@ const Home = () => {
         <h2 className="text-2xl font-semibold text-center mb-4">Bootcamp</h2>
         <Slideshow cards={cards2} direction={leftDirection} />
       </div>
+
+      {showLogin && <MultiRoleLogin onClose={handleCloseLogin} />}
     </div>
   );
 };
