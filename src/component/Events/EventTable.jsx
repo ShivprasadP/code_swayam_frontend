@@ -1,4 +1,5 @@
-import React from "react";
+import "react";
+import PropTypes from 'prop-types';
 
 // EventTable.js
 import { useNavigate } from "react-router-dom";
@@ -53,6 +54,10 @@ const EventTable = ({ events }) => {
       </div>
     </div>
   );
+};
+// Add PropTypes validation
+EventTable.propTypes = {
+  events: PropTypes.number.isRequired,  // Ensure numCards is a number and is required
 };
 
 export default EventTable;
