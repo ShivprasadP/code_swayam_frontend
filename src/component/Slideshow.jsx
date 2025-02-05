@@ -27,6 +27,11 @@ const Slideshow = ({ cards }) => {
     }
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   if (cards.length === 0) {
     return <div>No cards available</div>;
   }
@@ -39,14 +44,11 @@ const Slideshow = ({ cards }) => {
           isTransitioning ? "" : "transition-none"
         }`}
         style={{
-          transform: `translateX(-${(currentIndex + 1) * 50}%)`,
+          transform: `translateX(-${(currentIndex + 1) * 30}%)`,
         }}
         onTransitionEnd={handleTransitionEnd}
       >
-        <div
-          className="w-1/2 flex-shrink-0 px-4 py-6 bg-white rounded-lg shadow-lg mx-2"
-          style={{ minWidth: "50%" }}
-        >
+        <div className="w-1/3 flex-shrink-0 px-4 py-6 bg-white rounded-lg shadow-lg mx-2">
           <div className="flex justify-between items-center">
             <div className="text-left">
               <div className="text-2xl font-bold mb-2 text-gray-900">
@@ -57,7 +59,8 @@ const Slideshow = ({ cards }) => {
                 {cards[cards.length - 1]?.description}
               </p>
               <p className="text-gray-700">
-                <strong>Date:</strong> {cards[cards.length - 1]?.date}
+                <strong>Date:</strong>{" "}
+                {formatDate(cards[cards.length - 1]?.date)}
               </p>
               <p className="text-gray-700">
                 <strong>Time:</strong> {cards[cards.length - 1]?.time}
@@ -66,7 +69,7 @@ const Slideshow = ({ cards }) => {
                 <strong>Venue:</strong> {cards[cards.length - 1]?.venue}
               </p>
             </div>
-            <div className="w-24 h-24">
+            <div className="w-30 h-30">
               <img
                 src={`/images/${
                   cards[cards.length - 1]?.category === "Regular"
@@ -84,8 +87,7 @@ const Slideshow = ({ cards }) => {
           return (
             <div
               key={index}
-              className="w-1/2 flex-shrink-0 px-4 py-6 bg-white rounded-lg shadow-lg mx-2"
-              style={{ minWidth: "50%" }}
+              className="w-1/3 flex-shrink-0 px-4 py-6 bg-white rounded-lg shadow-lg mx-2"
             >
               <div className="flex justify-between items-center">
                 <div className="text-left">
@@ -96,7 +98,7 @@ const Slideshow = ({ cards }) => {
                     <strong>Description:</strong> {card.description}
                   </p>
                   <p className="text-gray-700">
-                    <strong>Date:</strong> {card.date}
+                    <strong>Date:</strong> {formatDate(card.date)}
                   </p>
                   <p className="text-gray-700">
                     <strong>Time:</strong> {card.time}
@@ -105,7 +107,7 @@ const Slideshow = ({ cards }) => {
                     <strong>Venue:</strong> {card.venue}
                   </p>
                 </div>
-                <div className="w-24 h-24">
+                <div className="w-30 h-30">
                   <img
                     src={`/images/${
                       card.category === "Regular" ? "event" : "bootcamp"
@@ -118,10 +120,7 @@ const Slideshow = ({ cards }) => {
             </div>
           );
         })}
-        <div
-          className="w-1/2 flex-shrink-0 px-4 py-6 bg-white rounded-lg shadow-lg mx-2"
-          style={{ minWidth: "50%" }}
-        >
+        <div className="w-1/3 flex-shrink-0 px-4 py-6 bg-white rounded-lg shadow-lg mx-2">
           <div className="flex justify-between items-center">
             <div className="text-left">
               <div className="text-2xl font-bold mb-2 text-gray-900">
@@ -131,7 +130,7 @@ const Slideshow = ({ cards }) => {
                 <strong>Description:</strong> {cards[0]?.description}
               </p>
               <p className="text-gray-700">
-                <strong>Date:</strong> {cards[0]?.date}
+                <strong>Date:</strong> {formatDate(cards[0]?.date)}
               </p>
               <p className="text-gray-700">
                 <strong>Time:</strong> {cards[0]?.time}
@@ -140,7 +139,7 @@ const Slideshow = ({ cards }) => {
                 <strong>Venue:</strong> {cards[0]?.venue}
               </p>
             </div>
-            <div className="w-24 h-24">
+            <div className="w-30 h-30">
               <img
                 src={`/images/${
                   cards[0]?.category === "Regular" ? "event" : "bootcamp"
