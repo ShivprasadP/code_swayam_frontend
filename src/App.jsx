@@ -8,6 +8,7 @@ import Footer from "./component/footer";
 import Practice from "./component/Practice/Practice";
 import Student_Request from "./component/Student_Request/Student_Request"
 import BootcampPage from "./component/Bootcamp/Boot"
+import AddProblemStatement from "./component/Problemstatement/AddPS";
 const App = () => {
   return (
     <Router>
@@ -22,13 +23,16 @@ const App = () => {
           {/* <Route path="/Event_Management" element={<Event_Management />} />
           <Route path="/Add_New_Events" element={<Add_New_Events />} /> */}
         {/* </Routes>
-        <Student_Request />
+       
         <BootcampPage/>
         <Footer />
         {/* // this is bootcamp of admin dashboard */}
-        {/* <BootcampPage/>      */}
-         </div>
-        {/* < AddProblemStatement/>  // this page from admin dashboard*/}
+         <Student_Request />
+         < AddProblemStatement/> 
+        </div>
+      
+        
+      
     </Router>
   );
 };
