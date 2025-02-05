@@ -1,15 +1,9 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import Slideshow from "./Slideshow";
-import Header from "./Header";
 import MultiRoleLogin from "./MultiRoleLogin";
 
 const Home = () => {
-  const [leftDirection] = useState("left");
-  const [showLogin, setShowLogin] = useState(false);
-  const { category } = useParams();
-
   const [cards1, setCards1] = useState([]);
   const [cards2, setCards2] = useState([]);
 
@@ -33,38 +27,19 @@ const Home = () => {
     fetchCards();
   }, []);
 
-  const handleLoginClick = () => {
-    setShowLogin(true);
-  };
-
-  const handleCloseLogin = () => {
-    setShowLogin(false);
-  };
-
   return (
     <div id="home" className="container mx-auto p-4">
-      <Header onLoginClick={handleLoginClick} />
       <div className="mb-12">
         <h2 className="text-2xl font-semibold text-center mb-4 mt-[100px]">
           Events
         </h2>
-        <Slideshow
-          cards={cards1}
-          direction={leftDirection}
-          showLogin={showLogin}
-        />
+        <Slideshow cards={cards1} />
       </div>
 
       <div className="mb-12">
         <h2 className="text-2xl font-semibold text-center mb-4">Bootcamp</h2>
-        <Slideshow
-          cards={cards2}
-          direction={leftDirection}
-          showLogin={showLogin}
-        />
+        <Slideshow cards={cards2} />
       </div>
-
-      {showLogin && <MultiRoleLogin onClose={handleCloseLogin} />}
     </div>
   );
 };
