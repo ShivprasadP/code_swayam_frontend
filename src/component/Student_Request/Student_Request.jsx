@@ -10,7 +10,7 @@ const Student_Request = () => {
         <div className="overflow-x-auto">
           <table className="w-full border border-gray-300 bg-white shadow-lg rounded-lg">
             <thead>
-              <tr className="bg-gradient-to-r from-amber-500 to-orange-400 text-white">
+              <tr className=" text-xl bg-gradient-to-r from-amber-500 to-orange-400 text-white">
                 <th className="p-4 text-left text-2xl w-16">Rank</th>
                 <th className="p-4 text-left text-2xl w-40">Name</th>
                 <th className="p-4 text-left text-2xl w-32">Class - Div</th>

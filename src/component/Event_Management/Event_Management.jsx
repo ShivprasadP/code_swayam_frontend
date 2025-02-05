@@ -11,7 +11,7 @@ const EventManagement = () => {
       <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-lg p-6 relative">
         <button
           onClick={() => navigate("/add-event")}
-          className="absolute top-6 right-6 bg-indigo-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-indigo-600 transition-all"
+          className="absolute top-6 right-6 from-amber-400 to-amber-600 text-white px-4 py-2 rounded-lg shadow-md"
         >
           New Event
         </button>
@@ -23,7 +23,7 @@ const EventManagement = () => {
         <div className="overflow-x-auto">
           <table className="w-full border border-gray-300 bg-white shadow-lg rounded-lg">
             <thead>
-              <tr className="bg-gray-200 text-gray-800 text-sm uppercase tracking-wide">
+              <tr className="text-xl bg-gradient-to-r from-amber-500 to-orange-400 text-white">
                 <th className="p-4 text-left">ID</th>
                 <th className="p-4 text-left">Date</th>
                 <th className="p-4 text-left">Category</th>
