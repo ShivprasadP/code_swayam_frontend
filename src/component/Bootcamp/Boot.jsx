@@ -1,19 +1,42 @@
 import { useState } from "react";
 
 function Card({ children, className }) {
-  return <div className={`bg-white-100 p-6 rounded-lg shadow-lg border-l-8 border-amber-500 transition-transform transform hover:scale-105 ${className}`}>{children}</div>;
+  return (
+    <div className={`w-full max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg border-l-8 border-amber-500 transition-transform transform ${className}`}>
+      {children}
+    </div>
+  );
 }
 
 function Button({ children, onClick, className }) {
-  return <button className={`bg-amber-500 text-white px-4 py-2 rounded shadow-md hover:bg-amber-600 transition-all ${className}`} onClick={onClick}>{children}</button>;
+  return (
+    <button className={`bg-amber-500 text-white px-4 py-2 rounded shadow-md hover:bg-amber-600 transition-all ${className}`} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
 
-function Input({ placeholder, name, value, onChange }) {
-  return <input className="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder={placeholder} name={name} value={value} onChange={onChange} />;
+function Input({ placeholder, name, value, onChange, type = "text" }) {
+  return (
+    <input
+      type={type}
+      className="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-amber-500"
+      placeholder={placeholder}
+      name={name}
+      value={value}
+      onChange={onChange}
+    />
+  );
 }
 
 function Table({ children }) {
-  return <table className="w-full border-collapse border border-amber-300 shadow-md bg-white-50">{children}</table>;
+  return (
+    <div className="flex justify-center">
+      <table className="w-full max-w-6xl border-collapse border border-amber-300 shadow-md bg-white">
+        {children}
+      </table>
+    </div>
+  );
 }
 
 function TableHeader({ children }) {
@@ -56,9 +79,10 @@ export default function BootcampPage() {
   };
 
   return (
-    <div className="p-6 bg-orange-50 min-h-screen">
-      <Card className="mb-6 bg-white">
-        <h2 className="text-xl font-semibold mb-4 text-amber-700">Add Bootcamp</h2>
+    <div className="p-6 bg-orange-50 min-h-screen flex flex-col items-center">
+      {/* Add Bootcamp Form */}
+      <Card className="mb-6">
+        <h2 className="text-xl font-semibold mb-4 text-amber-700 ">Add Bootcamp</h2>
         <div className="grid grid-cols-4 gap-4">
           <Input placeholder="Bootcamp Title" name="title" value={newBootcamp.title} onChange={handleChange} />
           <Input placeholder="Instructor" name="instructor" value={newBootcamp.instructor} onChange={handleChange} />
@@ -69,11 +93,14 @@ export default function BootcampPage() {
           <Input placeholder="Venue" name="venue" value={newBootcamp.venue} onChange={handleChange} />
           <Input placeholder="Contact" name="contact" value={newBootcamp.contact} onChange={handleChange} />
         </div>
-        <Button className="mt-4" onClick={addBootcamp}>Add Bootcamp</Button>
+        <div className="flex mt-4">
+          <Button onClick={addBootcamp}>Add Bootcamp</Button>
+        </div>
       </Card>
 
-      <Card className="mb-6 bg-white">
-        <h2 className="text-xl font-semibold mb-4 text-amber-700">Bootcamp List</h2>
+      {/* Bootcamp List */}
+      <Card className="mb-6">
+        <h2 className="text-xl font-semibold mb-4 text-amber-700 ">Bootcamp List</h2>
         <Table>
           <TableHeader>
             <TableRow>

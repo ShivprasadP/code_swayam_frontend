@@ -5,9 +5,9 @@ import Contactus from "./component/contactus";
 import Aboutus from "./component/aboutus";
 import Home from "./component/home";
 import Footer from "./component/footer";
-import EventRouting from "./component/Events/EventRouting";
 import Practice from "./component/Practice/Practice";
-import BootcampPage from "./component/Bootcamp/Boot";
+import Student_Request from "./component/Student_Request/Student_Request"
+import BootcampPage from "./component/Bootcamp/Boot"
 const App = () => {
   return (
     <Router>
@@ -23,8 +23,7 @@ const App = () => {
           <Route path="/Add_New_Events" element={<Add_New_Events />} /> */}
         </Routes>
         <Student_Request />
-        <Event_Management />
-        <Add_New_Events />
+        <BootcampPage/>
         <Footer />
         {/* // this is bootcamp of admin dashboard */}
         {/* <BootcampPage/>      */}
