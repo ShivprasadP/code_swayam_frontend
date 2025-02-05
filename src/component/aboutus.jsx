@@ -2,7 +2,7 @@ import "react";
 
 const AboutUs = () => {
   return (
-    <div id="aboutUS" className="min-h-screen bg-gray-100 text-gray-800 px-6 py-12">
+    <div id="aboutUS" className="min-h-screen bg-gray-100 text-gray-800 px-6 py-12 mt-[100px]">
       {/* Header Section */}
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-4xl font-bold text-amber-500">About CodeSwayam</h1>
