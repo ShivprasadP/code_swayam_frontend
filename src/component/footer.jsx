@@ -23,20 +23,17 @@ const Footer = () => {
 					</h2>
 					<ul className="mt-2">
 						<li className="hover:text-gray-300">
-							Inspiration Gallery
+							E-Learning 
+							
 						</li>
 						<li className="hover:text-gray-300">
-							Case Studies
+							Events and Bootcamps
 						</li>
-						<li className="hover:text-gray-300">
-							Trend Insights
-						</li>
+					
 						<li className="hover:text-gray-300">
 							Workshops and Webinars
 						</li>
-						<li className="hover:text-gray-300">
-							Community Involvement
-						</li>
+					
 					</ul>
 				</div>
 
