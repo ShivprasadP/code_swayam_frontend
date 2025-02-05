@@ -22,9 +22,11 @@ const Add_New_Events = () => {
   };
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen flex items-center justify-center">
-      <div className="max-w-lg w-full bg-white shadow-lg rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-center mb-4">Add New Event</h2>
+    <div className="p-8 bg-orange-50 min-h-screen flex items-center justify-center">
+      <div className="w-full max-w-3xl bg-white shadow-lg rounded-lg p-8 border-l-8 border-amber-500">
+        <h2 className="text-xl font-semibold mb-4 text-amber-700 ">
+          Add New Event
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
@@ -32,7 +34,7 @@ const Add_New_Events = () => {
             placeholder="Event Name"
             value={eventData.name}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-lg"
+            className="w-full p-3 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
             required
           />
           <input
@@ -40,7 +42,7 @@ const Add_New_Events = () => {
             name="date"
             value={eventData.date}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-lg"
+            className="w-full p-3 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
             required
           />
           <input
@@ -49,14 +51,14 @@ const Add_New_Events = () => {
             placeholder="Category"
             value={eventData.category}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-lg"
+            className="w-full p-3 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
           />
           <textarea
             name="description"
             placeholder="Event Description"
             value={eventData.description}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-lg"
+            className="w-full p-3 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
           />
           <input
             type="text"
@@ -64,11 +66,11 @@ const Add_New_Events = () => {
             placeholder="Contact Info"
             value={eventData.contact}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-lg"
+            className="w-full p-3 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
           />
           <button
             type="submit"
-            className="w-full bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition-all"
+            className="w-full bg-gradient-to-r from-amber-500 to-orange-400 text-white px-4 py-3 rounded-lg shadow-md hover:from-amber-600 hover:to-orange-500 transition-all"
           >
             Submit
           </button>

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Card({ children, className }) {
   return (
-    <div className={`w-full max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg border-l-8 border-amber-500 transition-transform transform ${className}`}>
+    <div className={`w-full mt-[145px] max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg border-l-8 border-amber-500 transition-transform transform ${className}`}>
       {children}
     </div>
   );
