@@ -28,7 +28,7 @@ const Header = ({ onLoginClick }) => {
 
       <div>
         <button
-          className="bg-gradient-to-r from-amber-400 to-amber-600 text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition-all duration-300"
+          className="bg-gradient-to-r from-amber-400 to-amber-600 text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition-all duration-300 cursor-pointer"
           onClick={onLoginClick}
         >
           Login/Signup

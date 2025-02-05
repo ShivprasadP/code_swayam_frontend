@@ -7,7 +7,7 @@ import Home from "./component/home";
 import Footer from "./component/footer";
 import EventRouting from "./component/Events/EventRouting";
 import Practice from "./component/Practice/Practice";
-
+import BootcampPage from "./component/Bootcamp/Boot";
 const App = () => {
   return (
     <Router>
@@ -21,9 +21,12 @@ const App = () => {
           <Route path="/practice" element={<Practice />} />
         </Routes>
         <Footer />
-      </div>
+        {/* // this is bootcamp of admin dashboard */}
+        {/* <BootcampPage/>      */}
+         </div>
     </Router>
   );
 };
 
 export default App;
+
