@@ -17,9 +17,14 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/contactus" element={<Contactus />} />
-          <Route path="/events/*" element={<EventRouting />} />
+          <Route path="/events/category/:category" element={<Home />} />
           <Route path="/practice" element={<Practice />} />
+          {/* <Route path="/Event_Management" element={<Event_Management />} />
+          <Route path="/Add_New_Events" element={<Add_New_Events />} /> */}
         </Routes>
+        <Student_Request />
+        <Event_Management />
+        <Add_New_Events />
         <Footer />
         {/* // this is bootcamp of admin dashboard */}
         {/* <BootcampPage/>      */}

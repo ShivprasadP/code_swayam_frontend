@@ -1,71 +1,67 @@
-import 'react';
+import React from 'react';
 
 const Contactus = () => {
-	return (
-		<div id='contact'
-			className='bg-white ml-[55px]
-	mr-[55px] mt-10 rounded-lg '>
-			<div className="flex flex-col p-10">
-				<div className='text-3xl mt-6 font-semibold
-		text-green-900'>
-					Contact Us
-				</div>
-				<form>
-					<div className='flex flex-col gap-4'>
-						<label htmlFor="name"
-							className='text-[18px] mt-4
-								text-green-950'>
-							Name
-						</label>
-						<input type="text" className='mb-4 
-			outline-none border-2 p-2 border-gray-500
-			rounded-md focus:ring focus:border-green-800'
-							required name="name" id="name" />
-					</div>
-					<div className='flex flex-col gap-4'>
-						<label htmlFor="no" className='text-[18px] 
-			text-green-950'>
-							Mobile No
-						</label>
-						<input type="number" className='mb-4 outline-none 
-			border-2 p-2 border-gray-500 rounded-md focus:ring
-			focus:border-green-800 '
-							required name="no" id="no" />
-					</div>
-					<div className='flex flex-col gap-4'>
-						<label htmlFor="email" className='text-[18px
-			] text-green-950'>
-							Email Id
-						</label>
-						<input type="email" className='mb-4 outline-none
-			border-2 p-2 border-gray-500 rounded-md focus:ring
-			focus:border-green-800 ' required name="email"
-							id="email " />
-					</div>
-					<div className='flex flex-col gap-4'>
-						<label htmlFor="text" className='text-[18px] 
-			text-green-950'>
-							Feedback(If any)
-						</label>
-						<textarea name="text" className='mb-4 outline-none
-			border-2 p-2 border-gray-500 rounded-md h-[105px]
-			focus:ring focus:border-green-800 ' id="text" >
+  return (
+    <div id='contact' className='bg-white mx-auto mt-[100px] max-w-lg rounded-lg shadow-lg p-8'>
+      <h2 className='text-4xl font-bold text-amber-500 text-center'>
+        Contact Us
+      </h2>
+      <form className='space-y-6'>
+        <div className='flex flex-col'>
+          <label htmlFor='name' className='text-lg text-green-950 font-medium'>
+            Name
+          </label>
+          <input
+            type='text'
+            id='name'
+            name='name'
+            className='mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-800'
+            required
+          />
+        </div>
+        <div className='flex flex-col'>
+          <label htmlFor='no' className='text-lg text-green-950 font-medium'>
+            Mobile No
+          </label>
+          <input
+            type='number'
+            id='no'
+            name='no'
+            className='mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-800'
+            required
+          />
+        </div>
+        <div className='flex flex-col'>
+          <label htmlFor='email' className='text-lg text-green-950 font-medium'>
+            Email ID
+          </label>
+          <input
+            type='email'
+            id='email'
+            name='email'
+            className='mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-800'
+            required
+          />
+        </div>
+        <div className='flex flex-col'>
+          <label htmlFor='text' className='text-lg text-green-950 font-medium'>
+            Feedback (If any)
+          </label>
+          <textarea
+            id='text'
+            name='text'
+            className='mt-2 p-3 border border-gray-300 rounded-md h-28 focus:outline-none focus:ring-2 focus:ring-green-800'
+          ></textarea>
+        </div>
+        <button
+          type='submit'
+          className='w-full text-lg font-semibold text-white bg-gradient-to-b from-amber-400 to-orange-400 text-white py-3 rounded-md '
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+};
 
-						</textarea>
-					</div>
-					<div>
-						<button className=' border-green-800 text text-xl
-		text-green-800 
-			border-2 p-[8px] pl-[25px] pr-[25px] 
-		rounded-md hover:bg-green-800 
-		hover:text-white hover:transition-all delay-75 mb-5
-			w-full
-		'>Submit</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	)
-}
-
-export default Contactus
+export default Contactus;
