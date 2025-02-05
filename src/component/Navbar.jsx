@@ -1,12 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const Navbar = ({ onLoginClick }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLoginClick = () => {
+    onLoginClick();
+    toggleMenu();
+    navigate("/login");
   };
 
   return (
@@ -38,7 +45,7 @@ const Navbar = ({ onLoginClick }) => {
       <div className="hidden md:block">
         <button
           className="bg-gradient-to-r from-amber-400 to-amber-600 text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition-all duration-300"
-          onClick={onLoginClick}
+          onClick={handleLoginClick}
         >
           Login/Signup
         </button>
@@ -75,10 +82,7 @@ const Navbar = ({ onLoginClick }) => {
             <li>
               <button
                 className="bg-gradient-to-r from-amber-400 to-amber-600 text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition-all duration-300"
-                onClick={() => {
-                  onLoginClick();
-                  toggleMenu();
-                }}
+                onClick={handleLoginClick}
               >
                 Login/Signup
               </button>

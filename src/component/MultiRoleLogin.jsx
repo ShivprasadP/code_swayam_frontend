@@ -39,15 +39,6 @@ const LoginForm = ({ loginData, setLoginData, handleLogin }) => (
   </div>
 );
 
-LoginForm.propTypes = {
-  loginData: PropTypes.shape({
-    email: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-  }).isRequired,
-  setLoginData: PropTypes.func.isRequired,
-  handleLogin: PropTypes.func.isRequired,
-};
-
 const MultiRoleLogin = ({ onClose }) => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
@@ -81,14 +72,6 @@ const MultiRoleLogin = ({ onClose }) => {
   return (
     <div className="fixed inset-0 bg-white bg-opacity-75 flex items-center justify-center">
       <div className="w-full max-w-2xl bg-white bg-opacity-70 rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden relative border border-gray-300">
-        <button
-          className="absolute top-2 right-2 p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition-all duration-300"
-          onClick={onClose}
-          aria-label="Close"
-        >
-          <XMarkIcon className="w-6 h-6 text-gray-700" />
-        </button>
-
         {/* Left Section */}
         <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-6 bg-gradient-to-b from-amber-300 to-orange-300 text-white">
           <UserCircleIcon className="w-24 h-24 text-black mb-4" />
@@ -108,10 +91,6 @@ const MultiRoleLogin = ({ onClose }) => {
       <ToastContainer style={{ zIndex: 9999 }} />
     </div>
   );
-};
-
-MultiRoleLogin.propTypes = {
-  onClose: PropTypes.func.isRequired,
 };
 
 export default MultiRoleLogin;
