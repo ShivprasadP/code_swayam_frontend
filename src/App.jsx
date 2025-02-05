@@ -13,21 +13,22 @@ const App = () => {
     <Router>
       <div className="bg-white">
         <Header />
-        <Routes>
+        {/* <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/contactus" element={<Contactus />} />
           <Route path="/events/category/:category" element={<Home />} />
-          <Route path="/practice" element={<Practice />} />
+          <Route path="/practice" element={<Practice />} /> */}
           {/* <Route path="/Event_Management" element={<Event_Management />} />
           <Route path="/Add_New_Events" element={<Add_New_Events />} /> */}
-        </Routes>
+        {/* </Routes>
         <Student_Request />
         <BootcampPage/>
         <Footer />
         {/* // this is bootcamp of admin dashboard */}
         {/* <BootcampPage/>      */}
          </div>
+        {/* < AddProblemStatement/>  // this page from admin dashboard*/}
     </Router>
   );
 };
