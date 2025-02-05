@@ -1,9 +1,7 @@
 const categories = [
-    { title: "Competitions", description: "Gain Practical Experience", icon: "💻", color: "bg-green-300" },
-    { title: "Mentorships", description: "Guidance From Top Mentors", icon: "🎓", color: "bg-orange-300" },
-    { title: "Quizzes", description: "Explore Diverse Careers", icon: "📂", color: "bg-blue-300" },
+    { title: "Events", description: "Gain Practical Experience ", icon: "💻", color: "bg-green-300" },
     { title: "Practice", description: "Refine Skills Daily", icon: "⌨️", color: "bg-purple-300" },
-    { title: "BootCamps", description: "Battle For Excellence", icon: "🏆", color: "bg-yellow-300" },
+    { title: "Bootcamps", description: "Battle For Excellence", icon: "🏆", color: "bg-yellow-300" },
     { title: "More", description: "Explore More Opportunities", icon: "🚀", color: "bg-pink-300" },
   ];
   
@@ -32,7 +30,7 @@ const categories = [
           {categories.map((item, index) => (
             <div 
               key={index}
-              className={`${item.color} p-6 rounded-2xl shadow-lg flex items-center justify-between cursor-pointer transition-all`}
+              className={`${item.color} p-6 h-40 rounded-2xl shadow-lg flex items-center justify-between cursor-pointer transition-all`}
             >
               <div className="text-3xl text-gray-900">{item.icon}</div>
               <div className="text-right">
