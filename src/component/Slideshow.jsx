@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 
 const Slideshow = ({ cards, direction, showLogin }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -9,7 +8,7 @@ const Slideshow = ({ cards, direction, showLogin }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
-    }, 3000); // Change slide every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [cards.length, direction]);
@@ -111,18 +110,6 @@ const Slideshow = ({ cards, direction, showLogin }) => {
       )}
     </div>
   );
-};
-
-// Add PropTypes validation
-Slideshow.propTypes = {
-  cards: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  direction: PropTypes.oneOf(["left", "right"]).isRequired,
-  showLogin: PropTypes.bool.isRequired,
 };
 
 export default Slideshow;
