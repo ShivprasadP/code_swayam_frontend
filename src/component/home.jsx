@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import Slideshow from "./Slideshow";
 import Header from "./Header";
 import MultiRoleLogin from "./MultiRoleLogin";
@@ -6,22 +8,30 @@ import MultiRoleLogin from "./MultiRoleLogin";
 const Home = () => {
   const [leftDirection] = useState("left");
   const [showLogin, setShowLogin] = useState(false);
+  const { category } = useParams();
 
-  const cards1 = [
-    { title: "Card 1", description: "Description for Card 1" },
-    { title: "Card 2", description: "Description for Card 2" },
-    { title: "Card 3", description: "Description for Card 3" },
-    { title: "Card 4", description: "Description for Card 4" },
-    { title: "Card 5", description: "Description for Card 5" },
-  ];
+  const [cards1, setCards1] = useState([]);
+  const [cards2, setCards2] = useState([]);
 
-  const cards2 = [
-    { title: "Card 6", description: "Description for Card 6" },
-    { title: "Card 7", description: "Description for Card 7" },
-    { title: "Card 8", description: "Description for Card 8" },
-    { title: "Card 9", description: "Description for Card 9" },
-    { title: "Card 10", description: "Description for Card 10" },
-  ];
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const response1 = await axios.get(
+          `${import.meta.env.VITE_API_URL}/events/category/Regular`
+        );
+        setCards1(response1.data);
+
+        const response2 = await axios.get(
+          `${import.meta.env.VITE_API_URL}/events/category/Bootcamp`
+        );
+        setCards2(response2.data);
+      } catch (error) {
+        console.error("Error fetching cards:", error);
+      }
+    };
+
+    fetchCards();
+  }, []);
 
   const handleLoginClick = () => {
     setShowLogin(true);
@@ -38,12 +48,20 @@ const Home = () => {
         <h2 className="text-2xl font-semibold text-center mb-4 mt-[100px]">
           Events
         </h2>
-        <Slideshow cards={cards1} direction={leftDirection} />
+        <Slideshow
+          cards={cards1}
+          direction={leftDirection}
+          showLogin={showLogin}
+        />
       </div>
 
       <div className="mb-12">
         <h2 className="text-2xl font-semibold text-center mb-4">Bootcamp</h2>
-        <Slideshow cards={cards2} direction={leftDirection} />
+        <Slideshow
+          cards={cards2}
+          direction={leftDirection}
+          showLogin={showLogin}
+        />
       </div>
 
       {showLogin && <MultiRoleLogin onClose={handleCloseLogin} />}

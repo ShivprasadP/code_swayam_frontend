@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
-const Slideshow = ({ cards, direction }) => {
+const Slideshow = ({ cards, direction, showLogin }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const slideshowRef = useRef(null);
@@ -28,6 +28,10 @@ const Slideshow = ({ cards, direction }) => {
     }
   };
 
+  if (cards.length === 0) {
+    return <div>No cards available</div>;
+  }
+
   return (
     <div className="relative w-full overflow-hidden bg-orange-100 rounded-lg p-4">
       <div
@@ -47,10 +51,10 @@ const Slideshow = ({ cards, direction }) => {
         >
           <div className="text-center">
             <div className="text-2xl font-bold mb-2 text-gray-900">
-              {cards[cards.length - 1].title}
+              {cards[cards.length - 1]?.title}
             </div>
             <p className="text-gray-700">
-              {cards[cards.length - 1].description}
+              {cards[cards.length - 1]?.description}
             </p>
           </div>
         </div>
@@ -74,12 +78,37 @@ const Slideshow = ({ cards, direction }) => {
         >
           <div className="text-center">
             <div className="text-2xl font-bold mb-2 text-gray-900">
-              {cards[0].title}
+              {cards[0]?.title}
             </div>
-            <p className="text-gray-700">{cards[0].description}</p>
+            <p className="text-gray-700">{cards[0]?.description}</p>
           </div>
         </div>
       </div>
+
+      {/* Navigation arrows */}
+      {!showLogin && (
+        <>
+          <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10">
+            <button
+              className="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-600 transition-all duration-300"
+              onClick={() => {
+                setIsTransitioning(true);
+                setCurrentIndex((prevIndex) => prevIndex - 1);
+              }}
+            >
+              &#8592;
+            </button>
+          </div>
+          <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10">
+            <button
+              className="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-600 transition-all duration-300"
+              onClick={handleNext}
+            >
+              &#8594;
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
@@ -93,6 +122,7 @@ Slideshow.propTypes = {
     })
   ).isRequired,
   direction: PropTypes.oneOf(["left", "right"]).isRequired,
+  showLogin: PropTypes.bool.isRequired,
 };
 
 export default Slideshow;
