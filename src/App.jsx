@@ -12,6 +12,12 @@ import MultiRoleLogin from "./component/MultiRoleLogin";
 import EventRouting from "./component/Events/EventRouting";
 import UnlockCareer from "./component/Home_Body";
 import Feedback from "./component/Feedback/Feedback";
+import AddProblemStatement from "./component/Problemstatement/AddPS";
+import StudentProfile from "./component/Student_Profile/student_profile";
+import BootcampPage from "./component/Bootcamp/Boot";
+import Compiler from "./component/Code_compiler/Compiler";
+
+
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -22,7 +28,9 @@ const App = () => {
 
   return (
     <>
-      //{" "}
+    {/* <Compiler/> */}
+
+     //{" "}
       <>
       <Router>
         <Navbar onLoginClick={handleLoginClick} />
@@ -37,11 +45,16 @@ const App = () => {
           <Route path="/add_new_events" element={<Add_New_Events />} />
         </Routes>
         <Footer />
-      </Router>
+      </Router> 
+      {/* <AddProblemStatement/>
+      <StudentProfile/>
+      <BootcampPage/> */} 
+   
       {/* <Feedback/> FEedback page at student dashboard */}
       </>
+      </>
      
-    </>
+   
   );
 };
 

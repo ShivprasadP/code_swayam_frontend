@@ -75,7 +75,7 @@ const AboutUs = () => {
           {/* Example of Team Members */}
           <div className="bg-gray-50 p-6 rounded-lg shadow-md text-center">
             <img
-              src="team_member1.jpg"
+              src="./images/dipika.jpg"
               alt="Team Member"
               className="w-32 h-32 mx-auto rounded-full mb-4"
             />
@@ -84,7 +84,7 @@ const AboutUs = () => {
           </div>
           <div className="bg-gray-50 p-6 rounded-lg shadow-md text-center">
             <img
-              src="team_member2.jpg"
+              src="./images/shiv.jpg"
               alt="Team Member"
               className="w-32 h-32 mx-auto rounded-full mb-4"
             />
@@ -93,7 +93,7 @@ const AboutUs = () => {
           </div>
           <div className="bg-gray-50 p-6 rounded-lg shadow-md text-center">
             <img
-              src="team_member3.jpg"
+              src="./images/tanuja.jpg"
               alt="Team Member"
               className="w-32 h-32 mx-auto rounded-full mb-4"
             />
