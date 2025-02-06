@@ -1,23 +1,51 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import CoordinatorTable from "./CoordinatorTable";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CoordinatorList = () => {
   const navigate = useNavigate();
   const [coordinators, setCoordinators] = useState([]);
 
   useEffect(() => {
-    setCoordinators(CoordinatorTable);
+    const fetchCoordinators = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/coordinators`
+        );
+        setCoordinators(response.data);
+      } catch (error) {
+        console.error("Error fetching coordinators:", error);
+      }
+    };
+
+    fetchCoordinators();
   }, []);
 
-  const handleRemove = (id) => {
-    const updatedCoordinators = coordinators.filter((coord) => coord.id !== id);
-    setCoordinators(updatedCoordinators);
-    alert("Coordinator Removed Successfully");
+  const handleRemove = async (email) => {
+    const confirmRemove = window.confirm(
+      "Are you sure you want to remove this coordinator?"
+    );
+    if (confirmRemove) {
+      try {
+        await axios.put(`${import.meta.env.VITE_API_URL}/coordinators/remove`, {
+          email,
+        });
+        const updatedCoordinators = coordinators.filter(
+          (coord) => coord.email !== email
+        );
+        setCoordinators(updatedCoordinators);
+        toast.warning("Coordinator Removed Successfully");
+      } catch (error) {
+        console.error("Error removing coordinator:", error);
+        toast.error("Failed to remove coordinator");
+      }
+    }
   };
 
   return (
-    <div className="p-8 mt-[125px] bg-gray-100 min-h-screen flex flex-col items-center">
+    <div className="p-8 bg-gray-100 min-h-screen flex flex-col items-center">
       <div className="w-full max-w-6xl bg-white shadow-lg rounded-lg p-6 transition-transform transform relative">
         {/* New Coordinator Button */}
         <button
@@ -37,26 +65,29 @@ const CoordinatorList = () => {
                 <th className="p-3 border">Phone</th>
                 <th className="p-3 border">Gender</th>
                 <th className="p-3 border">Address</th>
-                <th className="p-3 border">Class-Div</th>
                 <th className="p-3 border">Department</th>
                 <th className="p-3 border">Action</th>
               </tr>
             </thead>
             <tbody>
-              {CoordinatorTable.length > 0 ? (
-                CoordinatorTable.map((CoordinatorTable) => (
-                  <tr key={CoordinatorTable.id} className="border-b hover:bg-gray-100">
-                    <td className="p-3 border text-center">{CoordinatorTable.id}</td>
-                    <td className="p-3 border">{CoordinatorTable.full_name}</td>
-                    <td className="p-3 border">{CoordinatorTable.email}</td>
-                    <td className="p-3 border">{CoordinatorTable.phone_number}</td>
-                    <td className="p-3 border">{CoordinatorTable.gender}</td>
-                    <td className="p-3 border">{CoordinatorTable.address}</td>
-                    <td className="p-3 border">{CoordinatorTable.class_Div || "—"}</td>
-                    <td className="p-3 border">{CoordinatorTable.department || "—"}</td>
+              {coordinators.length > 0 ? (
+                coordinators.map((coordinator, index) => (
+                  <tr
+                    key={`${coordinator.email}-${index}`}
+                    className="border-b hover:bg-gray-100"
+                  >
+                    <td className="p-3 border text-center">{index + 1}</td>
+                    <td className="p-3 border">{coordinator.full_name}</td>
+                    <td className="p-3 border">{coordinator.email}</td>
+                    <td className="p-3 border">{coordinator.phone_number}</td>
+                    <td className="p-3 border">{coordinator.gender}</td>
+                    <td className="p-3 border">{coordinator.address}</td>
+                    <td className="p-3 border">
+                      {coordinator.department || "—"}
+                    </td>
                     <td className="p-3 border text-center">
                       <button
-                        onClick={() => handleRemove(CoordinatorTable.id)}
+                        onClick={() => handleRemove(coordinator.email)}
                         className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-all"
                       >
                         Remove
@@ -75,6 +106,7 @@ const CoordinatorList = () => {
           </table>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
