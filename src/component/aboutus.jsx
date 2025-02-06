@@ -4,9 +4,8 @@ const AboutUs = () => {
   return (
     <div
       id="aboutUS"
-      className="min-h-screen bg-gray-100 text-gray-800 px-6 py-12 mt-[100px]"
+      className="min-h-screen bg-gray-100 text-gray-800 px-6 py-12"
     >
-      {/* Navbar Section */}
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-4xl font-bold text-amber-500">About CodeSwayam</h1>
         <p className="mt-4 text-lg text-gray-600">
@@ -15,7 +14,6 @@ const AboutUs = () => {
         </p>
       </div>
 
-      {/* Mission & Vision Section */}
       <div className="max-w-5xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold text-gray-800">
           Our Mission & Vision
@@ -29,7 +27,6 @@ const AboutUs = () => {
         </p>
       </div>
 
-      {/* Goals Section */}
       <div className="max-w-5xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold text-gray-800">Our Goals</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
@@ -63,7 +60,6 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* Team Section */}
       <div className="max-w-5xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold text-gray-800">Meet Our Team</h2>
         <p className="mt-4 text-gray-600">
@@ -72,7 +68,6 @@ const AboutUs = () => {
           experience for students.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-          {/* Example of Team Members */}
           <div className="bg-gray-50 p-6 rounded-lg shadow-md text-center">
             <img
               src="team_member1.jpg"
@@ -103,7 +98,6 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* Footer */}
       <footer className="bg-gray-800 text-white py-6 text-center mt-12">
         <p>© 2025 CodeSwayam. All rights reserved.</p>
       </footer>

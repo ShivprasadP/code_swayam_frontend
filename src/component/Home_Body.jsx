@@ -44,7 +44,6 @@ export default function UnlockCareer() {
   };
 
   const checkSession = () => {
-    // Replace this with your actual session check logic
     return sessionStorage.getItem("user") !== null;
   };
 
