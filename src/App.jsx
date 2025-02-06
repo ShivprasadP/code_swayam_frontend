@@ -5,7 +5,6 @@ import ContactUs from "./component/ContactUs";
 import AboutUs from "./component/AboutUs";
 import Home from "./component/Home";
 import Footer from "./component/Footer";
-import Practice from "./component/Practice/Practice";
 import Event_Management from "./component/Event_Management/Event_Management";
 import Add_New_Events from "./component/Event_Management/Add_New_Events";
 import MultiRoleLogin from "./component/MultiRoleLogin";
@@ -23,7 +22,8 @@ import Feedback from "./component/Feedback/Feedback";
 import AddProblemStatement from "./component/Problemstatement/AddProblemStatement";
 import StudentProfile from "./component/Student_Profile/student_profile";
 import Compiler from "./component/Code_compiler/Compiler";
-import EventDetails from "./component/Events/EventDetails";
+import Activities from "./component/All_Activities/Activities";
+import Practice from "./component/Practice/Practice";import EventDetails from "./component/Events/EventDetails";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -46,16 +46,33 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className="bg-white">
+     <Router>
+       <div className="bg-white">
         <Navbar onLoginClick={handleLoginClick} user={user} />
-        <div className="pt-20">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/aboutus" element={<AboutUs />} />
-            <Route path="/contactus" element={<ContactUs />} />
+         <div className="pt-20">
+           <Routes>
+             <Route path="/" element={<Home />} />
+             <Route path="/aboutus" element={<AboutUs />} />
+             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/login" element={<MultiRoleLogin />} />
-            <Route path="/events/*" element={<EventRouting />} />
+            <Route path="/events/category/:category" element={<Home />} />
+<<<<<<< HEAD
+             <Route path="/practice" element={<Practice />} />
+             <Route path="/student-requests" element={<Student_Request />} />
+             <Route path="/event_management" element={<Event_Management />} />
+             <Route path="/add_new_events" element={<Add_New_Events />} />
+             <Route path="/admin-dashboard" element={<AdminDashboard />} />
+             <Route path="/faculty-dashboard" element={<FacultyDashboard />} />
+             <Route path="/student-dashboard" element={<StudentDashboard />} />
+           </Routes>
+       </div>
+         <Footer />
+         {showLogin && <MultiRoleLogin onLoginSuccess={handleLoginSuccess} />}
+       </div>
+     </Router>
+
+
+=======
             <Route path="/practice" element={<Practice />} />
             <Route path="/student-requests" element={<Student_Request />} />
             <Route path="/event_management" element={<Event_Management />} />
@@ -85,6 +102,7 @@ const App = () => {
         {showLogin && <MultiRoleLogin onLoginSuccess={handleLoginSuccess} />}
       </div>
     </Router>
+>>>>>>> 6c88e51b68cb6c41e71f7525244d79410446a5fc
   );
 };
 

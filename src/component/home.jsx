@@ -4,6 +4,7 @@ import Slideshow from "./Slideshow";
 import MultiRoleLogin from "./MultiRoleLogin";
 import UnlockCareer from "./Home_Body";
 
+
 const Home = () => {
 
   const [cards1, setCards1] = useState([]);
@@ -47,6 +48,7 @@ const Home = () => {
         <Slideshow cards={cards2} />
       </div>
     </div>
+   
     </>
   );
 
