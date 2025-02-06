@@ -2,36 +2,50 @@ import React from "react";
 import srdetails from "./srdetails";
 
 const Student_Request = () => {
-  // Function to handle Accept All
   const acceptAllRequests = () => {
     alert("All requests accepted successfully!");
   };
 
-  // Function to handle Reject All
   const rejectAllRequests = () => {
     alert("All requests rejected!");
   };
 
   return (
-    <div className="p-8  bg-orange-50 min-h-screen mt-20">
+    <div className="p-8  bg-orange-50 min-h-screen">
       <div className="max-w-6xl mx-auto border-l-8 border-amber-500 bg-white shadow-lg rounded-lg p-6 transition-transform transform ">
-        <h2 className="text-xl font-semibold mb-4 text-orange-700">Student Requests</h2>
+        <h2 className="text-xl font-semibold mb-4 text-orange-700">
+          Student Requests
+        </h2>
 
-        {/* Table with "Accept All" and "Reject All" buttons */}
         <div className="overflow-x-auto ">
           <table className="w-full border-collapse border border-amber-500 shadow-md bg-white transition-transform transform ">
-            {/* Table Header */}
             <thead className="bg-amber-500 text-white">
               <tr>
                 <th className="p-3 border border-orange-300 text-left">ID</th>
-                <th className="p-3 border border-orange-300 text-left">Full Name</th>
-                <th className="p-3 border border-orange-300 text-left">Email</th>
-                <th className="p-3 border border-orange-300 text-center">Phone</th>
-                <th className="p-3 border border-orange-300 text-center">Gender</th>
-                <th className="p-3 border border-orange-300 text-center">Address</th>
-                <th className="p-3 border border-orange-300 text-center">Class</th>
-                <th className="p-3 border border-orange-300 text-center">Div</th>
-                <th className="p-3 border border-orange-300 text-center">Department</th>
+                <th className="p-3 border border-orange-300 text-left">
+                  Full Name
+                </th>
+                <th className="p-3 border border-orange-300 text-left">
+                  Email
+                </th>
+                <th className="p-3 border border-orange-300 text-center">
+                  Phone
+                </th>
+                <th className="p-3 border border-orange-300 text-center">
+                  Gender
+                </th>
+                <th className="p-3 border border-orange-300 text-center">
+                  Address
+                </th>
+                <th className="p-3 border border-orange-300 text-center">
+                  Class
+                </th>
+                <th className="p-3 border border-orange-300 text-center">
+                  Div
+                </th>
+                <th className="p-3 border border-orange-300 text-center">
+                  Department
+                </th>
                 <th className="p-3 border border-orange-300 text-center">
                   <div className="flex flex-col items-center">
                     <span>Action</span>
@@ -54,20 +68,40 @@ const Student_Request = () => {
               </tr>
             </thead>
 
-            {/* Table Body */}
             <tbody>
               {srdetails.length > 0 ? (
                 srdetails.map((student, index) => (
-                  <tr key={index} className="border-b border-orange-300 hover:bg-orange-200 transition-all">
-                    <td className="p-3 border border-orange-300 text-left">{index + 1}</td>
-                    <td className="p-3 border border-orange-300 text-left">{student.full_name}</td>
-                    <td className="p-3 border border-orange-300 text-left">{student.email}</td>
-                    <td className="p-3 border border-orange-300 text-center">{student.phone_number}</td>
-                    <td className="p-3 border border-orange-300 text-center">{student.gender}</td>
-                    <td className="p-3 border border-orange-300 text-center">{student.address}</td>
-                    <td className="p-3 border border-orange-300 text-center">{student.class}</td>
-                    <td className="p-3 border border-orange-300 text-center">{student.div}</td>
-                    <td className="p-3 border border-orange-300 text-center">{student.department}</td>
+                  <tr
+                    key={index}
+                    className="border-b border-orange-300 hover:bg-orange-200 transition-all"
+                  >
+                    <td className="p-3 border border-orange-300 text-left">
+                      {index + 1}
+                    </td>
+                    <td className="p-3 border border-orange-300 text-left">
+                      {student.full_name}
+                    </td>
+                    <td className="p-3 border border-orange-300 text-left">
+                      {student.email}
+                    </td>
+                    <td className="p-3 border border-orange-300 text-center">
+                      {student.phone_number}
+                    </td>
+                    <td className="p-3 border border-orange-300 text-center">
+                      {student.gender}
+                    </td>
+                    <td className="p-3 border border-orange-300 text-center">
+                      {student.address}
+                    </td>
+                    <td className="p-3 border border-orange-300 text-center">
+                      {student.class}
+                    </td>
+                    <td className="p-3 border border-orange-300 text-center">
+                      {student.div}
+                    </td>
+                    <td className="p-3 border border-orange-300 text-center">
+                      {student.department}
+                    </td>
                     <td className="p-3 border border-orange-300 text-center">
                       <div className="flex justify-center space-x-2">
                         <button
