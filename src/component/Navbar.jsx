@@ -35,43 +35,56 @@ const Navbar = ({ onLoginClick, user }) => {
           </li>
           {user && user.role === "Student" && (
             <>
-              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
                 <Link to="/student-dashboard">Dashboard</Link>
               </li>
-              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
                 <Link to="/practice">Practice</Link>
               </li>
             </>
           )}
           {user && user.role === "Admin" && (
             <>
-              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
                 <Link to="/admin-dashboard">Dashboard</Link>
               </li>
-              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
-                <Link to="/add-coordinator">Add Coordinator</Link>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                <Link to="/coordinator-management">Coordinator Management</Link>
               </li>
-              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
                 <Link to="/activity-management">Activity Management</Link>
               </li>
             </>
           )}
           {user && user.role === "Faculty" && (
             <>
-              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
                 <Link to="/faculty-dashboard">Dashboard</Link>
               </li>
             </>
           )}
           {user && user.coordinator_role && (
-            <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
-              <Link to="/student-requests">Student Requests</Link>
-            </li>
+            <>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                <Link to="/student-requests">Student Requests</Link>
+              </li>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                <Link to="/event_management">Event Management</Link>
+              </li>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                <Link to="/bootcamp-management">Bootcamp Management</Link>
+              </li>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                <Link to="/problem-statement-management">
+                  Problem Statements
+                </Link>
+              </li>
+            </>
           )}
-          <li className="hover:text-amber-500 transition-all duration-300 ml-[30px] cursor-pointer">
+          <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
             <Link to="/aboutus">About Us</Link>
           </li>
-          <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+          <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
             <Link to="/contactus">Contact Us</Link>
           </li>
         </ul>
@@ -155,6 +168,21 @@ const Navbar = ({ onLoginClick, user }) => {
                 <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
                   <Link to="/student-requests" onClick={toggleMenu}>
                     Student Requests
+                  </Link>
+                </li>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/event_management" onClick={toggleMenu}>
+                    Event Management
+                  </Link>
+                </li>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/bootcamp-management" onClick={toggleMenu}>
+                    Bootcamp Management
+                  </Link>
+                </li>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/problem-statement-management" onClick={toggleMenu}>
+                    Problem Statements
                   </Link>
                 </li>
               </>
