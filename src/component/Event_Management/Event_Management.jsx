@@ -23,6 +23,22 @@ const EventManagement = () => {
     fetchEvents();
   }, []);
 
+  useEffect(() => {
+    const checkUserSession = () => {
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      if (!user || !user.coordinator_role) {
+        sessionStorage.removeItem("user");
+        navigate("/login", {
+          state: {
+            errorMessage: "Please log in as a coordinator to access this page.",
+          },
+        });
+      }
+    };
+
+    checkUserSession();
+  }, [navigate]);
+
   const formatDate = (dateString) => {
     const dateOptions = { year: "numeric", month: "2-digit", day: "2-digit" };
     const timeOptions = { hour: "numeric", minute: "numeric", hour12: true };

@@ -9,6 +9,22 @@ const CoordinatorList = () => {
   const [coordinators, setCoordinators] = useState([]);
 
   useEffect(() => {
+    const checkUserSession = () => {
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      if (!user || !user.coordinator_role) {
+        sessionStorage.removeItem("user");
+        navigate("/login", {
+          state: {
+            errorMessage: "Please log in as a admin to access this page.",
+          },
+        });
+      }
+    };
+
+    checkUserSession();
+  }, [navigate]);
+
+  useEffect(() => {
     const fetchCoordinators = async () => {
       try {
         const response = await axios.get(

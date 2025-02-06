@@ -1,10 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Student_Request = () => {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkUserSession = () => {
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      if (!user || !user.coordinator_role) {
+        sessionStorage.removeItem("user");
+        navigate("/login", {
+          state: {
+            errorMessage: "Please log in as a coordinator to access this page.",
+          },
+        });
+      }
+    };
+
+    checkUserSession();
+  }, [navigate]);
 
   useEffect(() => {
     const fetchRequests = async () => {

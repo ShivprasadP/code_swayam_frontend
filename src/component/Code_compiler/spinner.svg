@@ -1,10 +1,1 @@
-/*spinner.svg*/
-
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-<g><circle cx="3" cy="12" r="2" fill="currentColor"/><circle cx="21" cy="12" r="2" 
-fill="currentColor"/><circle cx="12" cy="21" r="2" fill="currentColor"/><circle cx="12"
-cy="3" r="2" fill="currentColor"/><circle cx="5.64" cy="5.64" r="2" fill="currentColor"/>
-<circle cx="18.36" cy="18.36" r="2" fill="currentColor"/><circle cx="5.64" cy="18.36" r="2"
-fill="currentColor"/><circle cx="18.36" cy="5.64" r="2" fill="currentColor"/>
-<animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite"
-type="rotate" values="0 12 12;360 12 12"/></g></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_VpEe{animation:spinner_vXu6 1.2s cubic-bezier(0.52,.6,.25,.99) infinite}.spinner_eahp{animation-delay:.4s}.spinner_f7Y2{animation-delay:.8s}@keyframes spinner_vXu6{0%{r:0;opacity:1}100%{r:11px;opacity:0}}</style><circle class="spinner_VpEe" cx="12" cy="12" r="0"/><circle class="spinner_VpEe spinner_eahp" cx="12" cy="12" r="0"/><circle class="spinner_VpEe spinner_f7Y2" cx="12" cy="12" r="0"/></svg>

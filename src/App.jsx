@@ -14,19 +14,16 @@ import CoordinatorList from "./component/Coordinator_Management/CoordinatorList"
 import AddCoordinator from "./component/Coordinator_Management/AddCoordinator";
 import Bootcamp_Management from "./component/Bootcamp_Management/Bootcamp_Management";
 import Add_New_Bootcamp from "./component/Bootcamp_Management/Add_New_Bootcamp";
-import AddPS from "./component/ProblemStatement/AddPS";
 import AdminDashboard from "./component/Dashboard/AdminDashboard";
 import FacultyDashboard from "./component/Dashboard/FacultyDashboard";
 import StudentDashboard from "./component/Dashboard/StudentDashboard";
 import EventRouting from "./component/Events/EventRouting";
 import UnlockCareer from "./component/Home_Body";
 import Feedback from "./component/Feedback/Feedback";
-import AddProblemStatement from "./component/Problemstatement/AddPS";
+import AddProblemStatement from "./component/Problemstatement/AddProblemStatement";
 import StudentProfile from "./component/Student_Profile/student_profile";
-import BootcampPage from "./component/Bootcamp/Boot";
 import Compiler from "./component/Code_compiler/Compiler";
-
-
+import EventDetails from "./component/Events/EventDetails";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -58,7 +55,7 @@ const App = () => {
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/login" element={<MultiRoleLogin />} />
-            <Route path="/events/category/:category" element={<Home />} />
+            <Route path="/events/*" element={<EventRouting />} />
             <Route path="/practice" element={<Practice />} />
             <Route path="/student-requests" element={<Student_Request />} />
             <Route path="/event_management" element={<Event_Management />} />
@@ -68,15 +65,20 @@ const App = () => {
               element={<Bootcamp_Management />}
             />
             <Route path="/add_new_bootcamp" element={<Add_New_Bootcamp />} />
-            <Route path="/problem-statement-management" element={<AddPS />} />
+            <Route
+              path="/problem-statement-management"
+              element={<AddProblemStatement />}
+            />
             <Route
               path="/coordinator-management"
               element={<CoordinatorList />}
             />
-            <Route path="add-coordinator" element={<AddCoordinator />} />
+            <Route path="/add-coordinator" element={<AddCoordinator />} />
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
             <Route path="/faculty-dashboard" element={<FacultyDashboard />} />
             <Route path="/student-dashboard" element={<StudentDashboard />} />
+            <Route path="/compiler" element={<Compiler />} />
+            <Route path="/event/:id" element={<EventDetails />} />
           </Routes>
         </div>
         <Footer />
