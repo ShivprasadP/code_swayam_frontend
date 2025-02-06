@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import Compiler from "../Code_compiler/Compiler";
-import Compiler from "../Code_compiler/Compiler";
 
 const Practice = () => {
   const [problems, setProblems] = useState([]);
@@ -111,10 +110,6 @@ const Practice = () => {
 
       <ToastContainer />
     </div>
-
-  <Compiler/>
-</>
-
   );
 };
 
