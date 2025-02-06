@@ -1,31 +1,26 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
 const categories = [
   {
     title: "Events",
-    description: "Gain Practical Experience ",
-    icon: "💻",
+    description: "Gain Practical Experience",
+    image: "/images/card3image.jpg",
     color: "bg-green-300",
   },
   {
     title: "Practice",
     description: "Refine Skills Daily",
-    icon: "⌨️",
+    image: "/images/card4image.jpg",
     color: "bg-purple-300",
   },
   {
     title: "Bootcamps",
     description: "Battle For Excellence",
-    icon: "🏆",
+    image: "/images/card5image.jpg",
     color: "bg-yellow-300",
   },
   {
     title: "More",
     description: "Explore More Opportunities",
-    icon: "🚀",
+    image: "/images/crad2image.jpg",
     color: "bg-pink-300",
   },
 ];
@@ -59,7 +54,7 @@ export default function UnlockCareer() {
           hired by your dream company.
         </p>
 
-        <div className="p-4 ">
+        <div className="p-4">
           <div className="flex flex-col items-start">
             <h2 className="text-xl font-semibold">
               Get the best recommendations!
@@ -68,10 +63,7 @@ export default function UnlockCareer() {
               Share your background and career goals for personalized
               recommendations.
             </p>
-            <button
-              className="mt-4 px-6 py-2 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition"
-              onClick={handleButtonClick}
-            >
+            <button className="mt-4 px-6 py-2 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition">
               Complete my profile
             </button>
           </div>
@@ -84,7 +76,11 @@ export default function UnlockCareer() {
             key={index}
             className={`${item.color} p-6 h-40 rounded-2xl shadow-lg flex items-center justify-between cursor-pointer transition-all`}
           >
-            <div className="text-3xl text-gray-900">{item.icon}</div>
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-25 h-25 rounded-full"
+            />
             <div className="text-right">
               <h3 className="text-xl font-semibold">{item.title}</h3>
               <p className="text-gray-700">{item.description}</p>
@@ -92,7 +88,6 @@ export default function UnlockCareer() {
           </div>
         ))}
       </div>
-      <ToastContainer />
     </div>
   );
 }

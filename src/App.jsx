@@ -12,6 +12,7 @@ import MultiRoleLogin from "./component/MultiRoleLogin";
 import AdminDashboard from "./component/Dashboard/AdminDashboard";
 import FacultyDashboard from "./component/Dashboard/FacultyDashboard";
 import StudentDashboard from "./component/Dashboard/StudentDashboard";
+import Feedback from "./component/Feedback/Feedback";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -34,28 +35,23 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className="bg-white">
-        <Navbar onLoginClick={handleLoginClick} user={user} />
-        <div className="pt-20">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/aboutus" element={<AboutUs />} />
-            <Route path="/contactus" element={<ContactUs />} />
-            <Route path="/login" element={<MultiRoleLogin />} />
-            <Route path="/events/category/:category" element={<Home />} />
-            <Route path="/practice" element={<Practice />} />
-            <Route path="/event_management" element={<Event_Management />} />
-            <Route path="/add_new_events" element={<Add_New_Events />} />
-            <Route path="/admin-dashboard" element={<AdminDashboard />} />
-            <Route path="/faculty-dashboard" element={<FacultyDashboard />} />
-            <Route path="/student-dashboard" element={<StudentDashboard />} />
-          </Routes>
-        </div>
+    <>
+      //{" "}
+      <Router>
+        <Navbar onLoginClick={handleLoginClick} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<MultiRoleLogin />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/events/category/:category" element={<Home />} />
+          <Route path="/practice" element={<Practice />} />
+          <Route path="/event_management" element={<Event_Management />} />
+          <Route path="/add_new_events" element={<Add_New_Events />} />
+        </Routes>
         <Footer />
-        {showLogin && <MultiRoleLogin onLoginSuccess={handleLoginSuccess} />}
-      </div>
-    </Router>
+      </Router>
+    </>
   );
 };
 
