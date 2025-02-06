@@ -11,7 +11,7 @@ const Student_Request = () => {
   };
 
   return (
-    <div className="p-8  bg-orange-50 min-h-screen mt-20">
+    <div className="p-8  bg-orange-50 min-h-screen">
       <div className="max-w-6xl mx-auto border-l-8 border-amber-500 bg-white shadow-lg rounded-lg p-6 transition-transform transform ">
         <h2 className="text-xl font-semibold mb-4 text-orange-700">
           Student Requests
