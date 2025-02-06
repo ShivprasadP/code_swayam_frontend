@@ -4,19 +4,11 @@ import CodeNavbar from "./Compiler_Navbar";
 import Axios from "axios";
 import { FaTrophy, FaMedal } from "react-icons/fa";
 import spinner from "./spinner.svg";
-
-
-
-// THis component call in student practice section
-
-
-
-
-
-
+import Confetti from "react-confetti"; // 🎉 Import Confetti effect
+import { useWindowSize } from "react-use"; // Helps to make Confetti responsive
 
 function Compiler() {
-  // State variables for code editor and settings
+  // State variables
   const [userCode, setUserCode] = useState(``);
   const [userLang, setUserLang] = useState("python");
   const [userTheme, setUserTheme] = useState("vs-dark");
@@ -24,6 +16,9 @@ function Compiler() {
   const [userInput, setUserInput] = useState("");
   const [userOutput, setUserOutput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false); // 🎉 State for confetti
+
+  const { width, height } = useWindowSize(); // Get screen width and height for confetti
 
   const options = { fontSize: fontSize };
 
@@ -39,6 +34,12 @@ function Compiler() {
     })
       .then((res) => {
         setUserOutput(res.data.stdout || res.data.stderr);
+
+        // 🎉 Show confetti if compilation is successful
+        if (res.data.stdout) {
+          setShowConfetti(true);
+          setTimeout(() => setShowConfetti(false), 4000); // Stop confetti after 4 sec
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -55,7 +56,10 @@ function Compiler() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 relative">
+      {/* 🎉 Confetti Effect (Appears only when showConfetti is true) */}
+      {showConfetti && <Confetti width={width} height={height} />}
+
       {/* Code Navbar */}
       <CodeNavbar
         userLang={userLang}

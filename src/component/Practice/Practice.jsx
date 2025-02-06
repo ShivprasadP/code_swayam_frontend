@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import Compiler from "../Code_compiler/Compiler";
 
 const Practice = () => {
   const [problems, setProblems] = useState([]);
@@ -47,6 +48,8 @@ const Practice = () => {
   };
 
   return (
+    <>
+   
     <div className="flex p-6 bg-gray-100 min-h-screen pt-10">
       <div className="w-1/4 bg-gradient-to-b from-gray-200 to-gray-200 p-4 rounded-lg shadow-md">
         <h2 className="text-3xl font-bold text-center text-black mb-6">
@@ -89,6 +92,10 @@ const Practice = () => {
       </div>
       <ToastContainer />
     </div>
+
+  <Compiler/>
+</>
+
   );
 };
 
