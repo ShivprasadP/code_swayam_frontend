@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { UserCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import PropTypes from "prop-types";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -39,7 +38,7 @@ const LoginForm = ({ loginData, setLoginData, handleLogin }) => (
   </div>
 );
 
-const MultiRoleLogin = ({ onClose }) => {
+const MultiRoleLogin = ({ onLoginSuccess }) => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
@@ -55,16 +54,29 @@ const MultiRoleLogin = ({ onClose }) => {
         loginData
       );
 
-      toast.success("Login successful!");
-      if (response.data.role === "Admin") {
-        navigate("/admin-dashboard");
-      } else if (response.data.role === "Faculty") {
-        navigate("/faculty-dashboard");
-      } else if (response.data.role === "Student") {
-        navigate("/student-dashboard");
+      if (response.status === 200 && response.data) {
+        sessionStorage.setItem("user", JSON.stringify(response.data));
+        onLoginSuccess(response.data);
+
+        // Navigate based on user role and show toast on the dashboard page
+        if (response.data.role === "Admin") {
+          navigate("/admin-dashboard", { state: { showToast: true } });
+        } else if (response.data.role === "Faculty") {
+          navigate("/faculty-dashboard", { state: { showToast: true } });
+        } else if (response.data.role === "Student") {
+          navigate("/student-dashboard", { state: { showToast: true } });
+        }
+      } else {
+        toast.error("Login failed. Please try again.");
       }
     } catch (error) {
-      toast.error("Login failed. Please try again.");
+      if (error.response && error.response.status === 404) {
+        toast.error("User not found. Please try again.");
+      } else if (error.response && error.response.status === 400) {
+        toast.error("Incorrect password. Please try again.");
+      } else {
+        toast.error("Login failed. Please try again.");
+      }
       console.error("Login error:", error);
     }
   };
@@ -88,7 +100,7 @@ const MultiRoleLogin = ({ onClose }) => {
           handleLogin={handleLogin}
         />
       </div>
-      <ToastContainer style={{ zIndex: 9999 }} />
+      <ToastContainer style={{ marginTop: "70px" }} />
     </div>
   );
 };

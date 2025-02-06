@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-const Navbar = ({ onLoginClick }) => {
+const Navbar = ({ onLoginClick, user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -10,10 +10,10 @@ const Navbar = ({ onLoginClick }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleLoginClick = () => {
-    onLoginClick();
-    toggleMenu();
-    navigate("/login");
+  const handleLogoutClick = () => {
+    sessionStorage.removeItem("user");
+    navigate("/");
+    window.location.reload();
   };
 
   return (
@@ -33,6 +33,41 @@ const Navbar = ({ onLoginClick }) => {
           <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[40px]">
             <Link to="/">Home</Link>
           </li>
+          {user && user.role === "Student" && (
+            <>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+                <Link to="/student-dashboard">Dashboard</Link>
+              </li>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+                <Link to="/practice">Practice</Link>
+              </li>
+            </>
+          )}
+          {user && user.role === "Admin" && (
+            <>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+                <Link to="/admin-dashboard">Dashboard</Link>
+              </li>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+                <Link to="/add-coordinator">Add Coordinator</Link>
+              </li>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+                <Link to="/activity-management">Activity Management</Link>
+              </li>
+            </>
+          )}
+          {user && user.role === "Faculty" && (
+            <>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+                <Link to="/faculty-dashboard">Dashboard</Link>
+              </li>
+            </>
+          )}
+          {user && user.coordinator_role && (
+            <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[30px]">
+              <Link to="/student-requests">Student Requests</Link>
+            </li>
+          )}
           <li className="hover:text-amber-500 transition-all duration-300 ml-[30px] cursor-pointer">
             <Link to="/aboutus">About Us</Link>
           </li>
@@ -43,12 +78,21 @@ const Navbar = ({ onLoginClick }) => {
       </div>
 
       <div className="hidden md:block">
-        <button
-          className="bg-gradient-to-r from-amber-400 to-amber-600 text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition-all duration-300"
-          onClick={handleLoginClick}
-        >
-          Login/Signup
-        </button>
+        {user ? (
+          <button
+            className="bg-gradient-to-r from-amber-400 to-amber-600 text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition-all duration-300"
+            onClick={handleLogoutClick}
+          >
+            Logout
+          </button>
+        ) : (
+          <button
+            className="bg-gradient-to-r from-amber-400 to-amber-600 text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition-all duration-300"
+            onClick={onLoginClick}
+          >
+            Login/Signup
+          </button>
+        )}
       </div>
 
       <div className="md:hidden flex items-center">
@@ -69,6 +113,52 @@ const Navbar = ({ onLoginClick }) => {
                 Home
               </Link>
             </li>
+            {user && user.role === "Student" && !user.coordinator_role && (
+              <>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/student-dashboard" onClick={toggleMenu}>
+                    Dashboard
+                  </Link>
+                </li>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/practice" onClick={toggleMenu}>
+                    Practice
+                  </Link>
+                </li>
+              </>
+            )}
+            {user && user.role === "Admin" && (
+              <>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/admin-dashboard" onClick={toggleMenu}>
+                    Dashboard
+                  </Link>
+                </li>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/add-coordinator" onClick={toggleMenu}>
+                    Add Coordinator
+                  </Link>
+                </li>
+              </>
+            )}
+            {user && user.role === "Faculty" && (
+              <>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/faculty-dashboard" onClick={toggleMenu}>
+                    Dashboard
+                  </Link>
+                </li>
+              </>
+            )}
+            {user && user.coordinator_role && (
+              <>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/student-requests" onClick={toggleMenu}>
+                    Student Requests
+                  </Link>
+                </li>
+              </>
+            )}
             <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
               <Link to="/aboutus" onClick={toggleMenu}>
                 About Us
@@ -80,12 +170,21 @@ const Navbar = ({ onLoginClick }) => {
               </Link>
             </li>
             <li>
-              <button
-                className="bg-gradient-to-r from-amber-400 to-amber-600 text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition-all duration-300"
-                onClick={handleLoginClick}
-              >
-                Login/Signup
-              </button>
+              {user ? (
+                <button
+                  className="bg-gradient-to-r from-amber-400 to-amber-600 text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition-all duration-300"
+                  onClick={handleLogoutClick}
+                >
+                  Logout
+                </button>
+              ) : (
+                <button
+                  className="bg-gradient-to-r from-amber-400 to-amber-600 text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition-all duration-300"
+                  onClick={onLoginClick}
+                >
+                  Login/Signup
+                </button>
+              )}
             </li>
           </ul>
         </div>
