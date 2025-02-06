@@ -1,78 +1,59 @@
-import 'react';
-
+import React from "react";
+import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
-	return (
-		<footer id='footer'
-			className="bg-gray-800 text-white py-4 mt-20">
-			<div className="container mx-auto grid 
-	grid-cols-4 gap-4 text-center">
-				<div className="flex flex-col justify-center">
-					<h2 className="text-lg font-bold">
-						Lets Create
-					</h2>
-					<input type="email" placeholder="Enter your email"
-						className="mt-2 px-4 py-2 bg-gray-700 text-white 
-		border border-gray-600 rounded-md focus:ring
-			focus:border-green-400" />
-				</div>
+  return (
+    <footer className="bg-amber-50 text-black py-10 mt-20">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-6">
+        {/* Logo and About */}
+        <div>
+          <img src="/images/logo4.png" alt="CodeSwayam Logo" className="w-40 h-auto" />
+          <p className="mt-3 text-gray-700 text-sm">
+            Empowering developers with learning,coding & Exploring.
+          </p>
+        </div>
 
-				<div className="flex flex-col justify-center">
-					<h2 className="text-lg font-semibold">
-						Our Services
-					</h2>
-					<ul className="mt-2">
-						<li className="hover:text-gray-300">
-							E-Learning 
-							
-						</li>
-						<li className="hover:text-gray-300">
-							Events and Bootcamps
-						</li>
-					
-						<li className="hover:text-gray-300">
-							Workshops and Webinars
-						</li>
-					
-					</ul>
-				</div>
+        {/* Our Services */}
+        <div>
+          <h2 className="text-lg font-semibold text-amber-500">Our Services</h2>
+          <ul className="mt-3 space-y-2 text-gray-700">
+            <li>E-Learning</li>
+            <li>Events & Bootcamps</li>
+            <li>Workshops & Webinars</li>
+            <li>Online Code Compiler</li>
+          </ul>
+        </div>
 
-				<div className="flex flex-col justify-center">
-					<h2 className="text-lg font-bold">
-						Our Company
-					</h2>
-					<ul className="mt-2">
-						<li className="hover:text-gray-300">
-							Our Services
-						</li>
-						<li className="hover:text-gray-300">
-							Home Section
-						</li>
-					</ul>
-				</div>
+        {/* Tech Stack */}
+        <div>
+          <h2 className="text-lg font-semibold text-amber-500">Tech Stack</h2>
+          <ul className="mt-3 space-y-2 text-gray-700">
+            <li>React.js & Next.js</li>
+            <li>Node.js & Express</li>
+            <li>MongoDB & Sqlite</li>
+            <li>Tailwind CSS & Bootstrap</li>
+          </ul>
+        </div>
 
-				<div className="flex flex-col justify-center">
-					<h2 className="text-lg font-bold">Contact Us</h2>
-					<address className="mt-2">
-						Don Bosco Street, Ottawa, Canada
-					</address>
-					<p className="mt-1">Phone: +1234567890</p>
-					<p>Email: letscreate153@gmail.com</p>
-					<div className="mt-2 flex justify-center">
-						<a href="#" className="mr-2 text-4xl 
-			hover:text-green-300 cursor-default">
-						</a>
-						<a href="#" className="mr-2 text-4xl 
-			hover:text-green-300 cursor-default">
-						</a>
-						<a href="#" className="hover:text-green-300
-			text-4xl cursor-default">
-						</a>
-					</div>
-				</div>
-			</div>
-		</footer>
-	);
+        {/* Contact Info */}
+        <div>
+          <h2 className="text-lg font-semibold text-amber-500">Contact Us</h2>
+          <address className="mt-3 text-gray-700">KIT road, Kolhapur</address>
+          <p className="text-gray-700">Phone: +91 7375807178</p>
+          <p className="text-gray-700">Email: support@codeswayam.com</p>
+          <div className="flex space-x-4 mt-3 text-black-600">
+            <FaFacebook size={24} className="cursor-pointer hover:text-blue-500" />
+            <FaTwitter size={24} className="cursor-pointer hover:text-blue-300" />
+            <FaLinkedin size={24} className="cursor-pointer hover:text-blue-700" />
+          </div>
+        </div>
+      </div>
+      
+      <div className="text-center text-white text-sm mt-8 border-t bg-black border-gray-300 pt-4">
+        &copy; {new Date().getFullYear()} CodeSwayam. All rights reserved.
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

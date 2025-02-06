@@ -21,6 +21,12 @@ import StudentDashboard from "./component/Dashboard/StudentDashboard";
 import EventRouting from "./component/Events/EventRouting";
 import UnlockCareer from "./component/Home_Body";
 import Feedback from "./component/Feedback/Feedback";
+import AddProblemStatement from "./component/Problemstatement/AddPS";
+import StudentProfile from "./component/Student_Profile/student_profile";
+import BootcampPage from "./component/Bootcamp/Boot";
+import Compiler from "./component/Code_compiler/Compiler";
+
+
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
