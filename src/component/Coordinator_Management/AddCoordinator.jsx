@@ -12,11 +12,11 @@ const AddCoordinator = () => {
   useEffect(() => {
     const checkUserSession = () => {
       const user = JSON.parse(sessionStorage.getItem("user"));
-      if (!user || !user.coordinator_role) {
+      if (!user || user.role !== "Admin") {
         sessionStorage.removeItem("user");
         navigate("/login", {
           state: {
-            errorMessage: "Please log in as a admin to access this page.",
+            errorMessage: "Please log in as an admin to access this page.",
           },
         });
       }

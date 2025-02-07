@@ -52,7 +52,6 @@ const CodeNavbar = ({
 
   return (
     <div className="bg-gradient-to-r from-amber-500 to-orange-500 shadow-lg p-4 flex items-center justify-between rounded-lg animate-fade-in">
-      {/* Logo and Title */}
       <div className="flex items-center space-x-3">
         <FaTrophy className="text-white text-3xl animate-pulse" />
         <h1 className="text-white text-2xl font-bold tracking-wide">
@@ -61,7 +60,6 @@ const CodeNavbar = ({
         <FaMedal className="text-yellow-300 text-3xl animate-bounce" />
       </div>
 
-      {/* Language Selector */}
       <div className="flex items-center space-x-4">
         <div className="flex flex-col items-center">
           <span className="text-white font-semibold">Language</span>
@@ -82,7 +80,6 @@ const CodeNavbar = ({
           />
         </div>
 
-        {/* Theme Selector */}
         <div className="flex flex-col items-center">
           <span className="text-white font-semibold">Theme</span>
           <Select
@@ -102,7 +99,6 @@ const CodeNavbar = ({
           />
         </div>
 
-        {/* Font Size Selector */}
         <div className="flex flex-col items-center">
           <label className="text-white font-semibold">Font Size</label>
           <Select

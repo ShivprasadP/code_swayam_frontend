@@ -8,17 +8,17 @@ const Practice = () => {
   const [problems, setProblems] = useState([]);
   const [selectedProblem, setSelectedProblem] = useState(null);
   const [showCompiler, setShowCompiler] = useState(false);
-  const compilerRef = useRef(null);
+  const compilerNavbarRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkUserSession = () => {
       const user = JSON.parse(sessionStorage.getItem("user"));
-      if (!user || !user.role === "Student") {
+      if (!user || user.role !== "Student") {
         sessionStorage.removeItem("user");
         navigate("/login", {
           state: {
-            errorMessage: "Please log in as a student to access this page.",
+            errorMessage: "Please log in as an student to access this page.",
           },
         });
       }
@@ -51,7 +51,7 @@ const Practice = () => {
     if (selectedProblem) {
       setShowCompiler(true);
       setTimeout(() => {
-        compilerRef.current.scrollIntoView({ behavior: "smooth" });
+        compilerNavbarRef.current.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
   };
@@ -103,8 +103,11 @@ const Practice = () => {
       </div>
 
       {showCompiler && (
-        <div ref={compilerRef} className="mt-6">
-          <Compiler problemId={selectedProblem._id} />
+        <div ref={compilerNavbarRef} className="mt-6">
+          <Compiler
+            problemId={selectedProblem._id}
+            rewardPoints={selectedProblem.rewardPoints}
+          />
         </div>
       )}
 

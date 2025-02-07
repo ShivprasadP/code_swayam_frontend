@@ -29,7 +29,7 @@ const Navbar = ({ onLoginClick, user }) => {
             className="w-full h-full object-contains"
           />
         </div>
-        <ul className="hidden md:flex space-x-8 text-lg font-medium text-gray-700">
+        <ul className="hidden md:flex space-x-8 text-base font-medium text-gray-700">
           <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[40px]">
             <Link to="/">Home</Link>
           </li>
@@ -40,6 +40,9 @@ const Navbar = ({ onLoginClick, user }) => {
               </li>
               <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
                 <Link to="/practice">Practice</Link>
+              </li>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                <Link to="/rank">Ranking</Link>
               </li>
             </>
           )}
@@ -54,12 +57,18 @@ const Navbar = ({ onLoginClick, user }) => {
               <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
                 <Link to="/activity-management">Activity Management</Link>
               </li>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                <Link to="/faculty-management">Faculty Management</Link>
+              </li>
             </>
           )}
           {user && user.role === "Faculty" && (
             <>
               <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
                 <Link to="/faculty-dashboard">Dashboard</Link>
+              </li>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                <Link to="/student-management">Student Management</Link>
               </li>
             </>
           )}
@@ -79,13 +88,22 @@ const Navbar = ({ onLoginClick, user }) => {
                   Problem Statements
                 </Link>
               </li>
+              <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                <Link to="/add-test-case">Test Case Management</Link>
+              </li>
             </>
           )}
+          <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+            <Link to="/profile">Profile</Link>
+          </li>
           <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
             <Link to="/aboutus">About Us</Link>
           </li>
           <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
             <Link to="/contactus">Contact Us</Link>
+          </li>
+          <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+            <Link to="/feedback">Feedback</Link>
           </li>
         </ul>
       </div>
@@ -120,13 +138,13 @@ const Navbar = ({ onLoginClick, user }) => {
 
       {isOpen && (
         <div className="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden">
-          <ul className="flex flex-col items-center space-y-4 py-4 text-lg font-medium text-gray-700">
+          <ul className="flex flex-col items-center space-y-4 py-4 text-base font-medium text-gray-700">
             <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
               <Link to="/" onClick={toggleMenu}>
                 Home
               </Link>
             </li>
-            {user && user.role === "Student" && !user.coordinator_role && (
+            {user && user.role === "Student" && (
               <>
                 <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
                   <Link to="/student-dashboard" onClick={toggleMenu}>
@@ -136,6 +154,11 @@ const Navbar = ({ onLoginClick, user }) => {
                 <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
                   <Link to="/practice" onClick={toggleMenu}>
                     Practice
+                  </Link>
+                </li>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/rank" onClick={toggleMenu}>
+                    Ranking
                   </Link>
                 </li>
               </>
@@ -148,8 +171,18 @@ const Navbar = ({ onLoginClick, user }) => {
                   </Link>
                 </li>
                 <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
-                  <Link to="/add-coordinator" onClick={toggleMenu}>
-                    Add Coordinator
+                  <Link to="/coordinator-management" onClick={toggleMenu}>
+                    Coordinator Management
+                  </Link>
+                </li>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/activity-management" onClick={toggleMenu}>
+                    Activity Management
+                  </Link>
+                </li>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/faculty-management" onClick={toggleMenu}>
+                    Faculty Management
                   </Link>
                 </li>
               </>
@@ -159,6 +192,11 @@ const Navbar = ({ onLoginClick, user }) => {
                 <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
                   <Link to="/faculty-dashboard" onClick={toggleMenu}>
                     Dashboard
+                  </Link>
+                </li>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/student-management" onClick={toggleMenu}>
+                    Student Management
                   </Link>
                 </li>
               </>
@@ -185,8 +223,18 @@ const Navbar = ({ onLoginClick, user }) => {
                     Problem Statements
                   </Link>
                 </li>
+                <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+                  <Link to="/add-test-case" onClick={toggleMenu}>
+                    Test Case Management
+                  </Link>
+                </li>
               </>
             )}
+            <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+              <Link to="/profile" onClick={toggleMenu}>
+                Profile
+              </Link>
+            </li>
             <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
               <Link to="/aboutus" onClick={toggleMenu}>
                 About Us
@@ -195,6 +243,11 @@ const Navbar = ({ onLoginClick, user }) => {
             <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
               <Link to="/contactus" onClick={toggleMenu}>
                 Contact Us
+              </Link>
+            </li>
+            <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer">
+              <Link to="/feedback" onClick={toggleMenu}>
+                Feedback
               </Link>
             </li>
             <li>

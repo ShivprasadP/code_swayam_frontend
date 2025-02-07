@@ -14,11 +14,11 @@ function EventDetails() {
   useEffect(() => {
     const checkUserSession = () => {
       const user = JSON.parse(sessionStorage.getItem("user"));
-      if (!user || !user.role === "Student") {
+      if (!user || user.role !== "Student") {
         sessionStorage.removeItem("user");
         navigate("/login", {
           state: {
-            errorMessage: "Please log in as a student to access this page.",
+            errorMessage: "Please log in as an student to access this page.",
           },
         });
       }

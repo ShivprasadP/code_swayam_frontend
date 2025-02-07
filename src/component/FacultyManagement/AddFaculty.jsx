@@ -1,26 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddFaculty = () => {
   const navigate = useNavigate();
-  const [facultyData, setfacultyData] = useState({
-    name: "",
-    date: "",
-    category: "",
-    description: "",
-    contact: "",
+  const [facultyData, setFacultyData] = useState({
+    full_name: "",
+    email: "",
+    phone_number: "",
+    gender: "Male",
+    address: "",
+    password: "",
     department: "",
     designation: "",
+    role: "Faculty",
+    faculty_role: true,
   });
 
   useEffect(() => {
     const checkUserSession = () => {
       const user = JSON.parse(sessionStorage.getItem("user"));
-      if (!user || !user.role === "Admin") {
+      if (!user || user.role !== "Admin") {
         sessionStorage.removeItem("user");
         navigate("/login", {
           state: {
-            errorMessage: "Please log in as a admin to access this page.",
+            errorMessage: "Please log in as an admin to access this page.",
           },
         });
       }
@@ -30,13 +36,26 @@ const AddFaculty = () => {
   }, [navigate]);
 
   const handleChange = (e) => {
-    setfacultyData({ ...facultyData, [e.target.name]: e.target.value });
+    setFacultyData({ ...facultyData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Faculty Added:", facultyData);
-    navigate("/"); // Navigate back to event list after submission
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/users/register/faculty`,
+        facultyData
+      );
+      if (response.status === 201) {
+        toast.success("Faculty added successfully!");
+        navigate("/faculty-management");
+      } else {
+        toast.error("Failed to add faculty.");
+      }
+    } catch (error) {
+      console.error("Error adding faculty:", error);
+      toast.error("Failed to add faculty.");
+    }
   };
 
   return (
@@ -48,16 +67,16 @@ const AddFaculty = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
-            name="name"
-            placeholder="FirstName MiddleName LastName"
-            value={facultyData.name}
+            name="full_name"
+            placeholder="Full Name"
+            value={facultyData.full_name}
             onChange={handleChange}
             className="w-full p-3 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
             required
           />
           <input
             type="email"
-            placeholder="abc123@gmail.com"
+            placeholder="Email"
             name="email"
             value={facultyData.email}
             onChange={handleChange}
@@ -66,11 +85,12 @@ const AddFaculty = () => {
           />
           <input
             type="text"
-            name="contact"
-            placeholder="Mobile Number"
-            value={facultyData.contact}
+            name="phone_number"
+            placeholder="Phone Number"
+            value={facultyData.phone_number}
             onChange={handleChange}
             className="w-full p-3 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+            required
           />
           <select
             name="gender"
@@ -82,15 +102,23 @@ const AddFaculty = () => {
             <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select>
-
           <textarea
             name="address"
             placeholder="Address"
             value={facultyData.address}
             onChange={handleChange}
             className="w-full p-3 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+            required
           />
-
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={facultyData.password}
+            onChange={handleChange}
+            className="w-full p-3 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+            required
+          />
           <input
             type="text"
             name="department"
@@ -109,7 +137,6 @@ const AddFaculty = () => {
             className="w-full p-3 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
             required
           />
-
           <button
             type="submit"
             className="w-full bg-gradient-to-r from-amber-500 to-orange-400 text-white px-4 py-3 rounded-lg shadow-md hover:from-amber-600 hover:to-orange-500 transition-all"
@@ -118,6 +145,7 @@ const AddFaculty = () => {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -4,9 +4,9 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const CoordinatorList = () => {
+const FacultyList = () => {
   const navigate = useNavigate();
-  const [coordinators, setCoordinators] = useState([]);
+  const [faculties, setFaculties] = useState([]);
 
   useEffect(() => {
     const checkUserSession = () => {
@@ -25,37 +25,35 @@ const CoordinatorList = () => {
   }, [navigate]);
 
   useEffect(() => {
-    const fetchCoordinators = async () => {
+    const fetchFaculties = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/coordinators`
+          `${import.meta.env.VITE_API_URL}/users/role/Faculty`
         );
-        setCoordinators(response.data);
+        setFaculties(response.data);
       } catch (error) {
-        console.error("Error fetching coordinators:", error);
+        console.error("Error fetching faculties:", error);
       }
     };
 
-    fetchCoordinators();
+    fetchFaculties();
   }, []);
 
-  const handleRemove = async (email) => {
+  const handleRemove = async (id) => {
     const confirmRemove = window.confirm(
-      "Are you sure you want to remove this coordinator?"
+      "Are you sure you want to remove this faculty?"
     );
     if (confirmRemove) {
       try {
-        await axios.put(`${import.meta.env.VITE_API_URL}/coordinators/remove`, {
-          email,
-        });
-        const updatedCoordinators = coordinators.filter(
-          (coord) => coord.email !== email
+        await axios.delete(`${import.meta.env.VITE_API_URL}/users/${id}`);
+        const updatedFaculties = faculties.filter(
+          (faculty) => faculty._id !== id
         );
-        setCoordinators(updatedCoordinators);
-        toast.warning("Coordinator Removed Successfully");
+        setFaculties(updatedFaculties);
+        toast.warning("Faculty Removed Successfully");
       } catch (error) {
-        console.error("Error removing coordinator:", error);
-        toast.error("Failed to remove coordinator");
+        console.error("Error removing faculty:", error);
+        toast.error("Failed to remove faculty");
       }
     }
   };
@@ -63,12 +61,12 @@ const CoordinatorList = () => {
   return (
     <div className="p-8 bg-gray-100 min-h-screen flex flex-col items-center">
       <div className="w-full max-w-6xl bg-white shadow-lg rounded-lg p-6 transition-transform transform relative">
-        {/* New Coordinator Button */}
+        {/* New Faculty Button */}
         <button
-          onClick={() => navigate("/add-coordinator")}
+          onClick={() => navigate("/add-faculty")}
           className="absolute right-6 bg-gradient-to-r from-amber-400 to-amber-600 text-white px-4 py-2 rounded-lg shadow-md hover:from-amber-500 hover:to-amber-700 transition-all"
         >
-          New Coordinator
+          New Faculty
         </button>
 
         <div className="overflow-x-auto mt-[50px]">
@@ -86,24 +84,22 @@ const CoordinatorList = () => {
               </tr>
             </thead>
             <tbody>
-              {coordinators.length > 0 ? (
-                coordinators.map((coordinator, index) => (
+              {faculties.length > 0 ? (
+                faculties.map((faculty, index) => (
                   <tr
-                    key={`${coordinator.email}-${index}`}
+                    key={`${faculty._id}-${index}`}
                     className="border-b hover:bg-gray-100"
                   >
                     <td className="p-3 border text-center">{index + 1}</td>
-                    <td className="p-3 border">{coordinator.full_name}</td>
-                    <td className="p-3 border">{coordinator.email}</td>
-                    <td className="p-3 border">{coordinator.phone_number}</td>
-                    <td className="p-3 border">{coordinator.gender}</td>
-                    <td className="p-3 border">{coordinator.address}</td>
-                    <td className="p-3 border">
-                      {coordinator.department || "—"}
-                    </td>
+                    <td className="p-3 border">{faculty.full_name}</td>
+                    <td className="p-3 border">{faculty.email}</td>
+                    <td className="p-3 border">{faculty.phone_number}</td>
+                    <td className="p-3 border">{faculty.gender}</td>
+                    <td className="p-3 border">{faculty.address}</td>
+                    <td className="p-3 border">{faculty.department || "—"}</td>
                     <td className="p-3 border text-center">
                       <button
-                        onClick={() => handleRemove(coordinator.email)}
+                        onClick={() => handleRemove(faculty._id)}
                         className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-all"
                       >
                         Remove
@@ -113,8 +109,8 @@ const CoordinatorList = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="9" className="text-center p-4 text-gray-600">
-                    No coordinators available.
+                  <td colSpan="8" className="text-center p-4 text-gray-600">
+                    No faculties available.
                   </td>
                 </tr>
               )}
@@ -127,4 +123,4 @@ const CoordinatorList = () => {
   );
 };
 
-export default CoordinatorList;
+export default FacultyList;

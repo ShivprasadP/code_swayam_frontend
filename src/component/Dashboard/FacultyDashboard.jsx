@@ -12,11 +12,11 @@ const FacultyDashboard = () => {
   useEffect(() => {
     const checkUserSession = () => {
       const user = JSON.parse(sessionStorage.getItem("user"));
-      if (!user || !user.role === "Faculty") {
+      if (!user || user.role !== "Faculty") {
         sessionStorage.removeItem("user");
         navigate("/login", {
           state: {
-            errorMessage: "Please log in as a Faculty to access this page.",
+            errorMessage: "Please log in as an faculty to access this page.",
           },
         });
       }

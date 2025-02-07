@@ -323,7 +323,7 @@ const Student_Request = () => {
                     </td>
                     <td className="p-3 border border-orange-300 text-center">{`${request.student.class} ${request.student.div}`}</td>
                     <td className="p-3 border border-orange-300 text-center">
-                      {request.event.title}
+                      {request.event?.title || "N/A"}
                     </td>
                     <td
                       className={`p-3 border border-orange-300 text-center font-semibold ${getStatusClass(
@@ -437,7 +437,7 @@ const Student_Request = () => {
                     </td>
                     <td className="p-3 border border-orange-300 text-center">{`${request.student.class} ${request.student.div}`}</td>
                     <td className="p-3 border border-orange-300 text-center">
-                      {request.event.title}
+                      {request.event?.title || "N/A"}
                     </td>
                     <td
                       className={`p-3 border border-orange-300 text-center font-semibold ${getStatusClass(

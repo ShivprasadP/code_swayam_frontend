@@ -9,9 +9,7 @@ const Feedback = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Display success message after form submission
     setIsSubmitted(true);
-    // Clear the form after submission
     setName("");
     setEmail("");
     setFeedbackType("query");

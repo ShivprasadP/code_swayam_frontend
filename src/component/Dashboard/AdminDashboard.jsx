@@ -9,15 +9,16 @@ import AdminFeatures from "../Features/AdminFeatures";
 const AdminDashboard = () => {
   const [cards, setCards] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const checkUserSession = () => {
       const user = JSON.parse(sessionStorage.getItem("user"));
-      if (!user || user.role === "Admin") {
+      if (!user || user.role !== "Admin") {
         sessionStorage.removeItem("user");
         navigate("/login", {
           state: {
-            errorMessage: "Please log in as a admin to access this page.",
+            errorMessage: "Please log in as an admin to access this page.",
           },
         });
       }
@@ -43,8 +44,6 @@ const AdminDashboard = () => {
 
     fetchCards();
   }, []);
-
-  const location = useLocation();
 
   useEffect(() => {
     const showToast = location.state?.showToast;
