@@ -13,7 +13,7 @@ import CoordinatorList from "./component/Coordinator_Management/CoordinatorList"
 import AddCoordinator from "./component/Coordinator_Management/AddCoordinator";
 import Bootcamp_Management from "./component/Bootcamp_Management/Bootcamp_Management";
 import Add_New_Bootcamp from "./component/Bootcamp_Management/Add_New_Bootcamp";
-import AddProblemStatement from "./component/Problemstatement/AddPS";
+// import AddProblemStatement from "./component/Problemstatement/AddPS";
 import AdminDashboard from "./component/Dashboard/AdminDashboard";
 import FacultyDashboard from "./component/Dashboard/FacultyDashboard";
 import StudentDashboard from "./component/Dashboard/StudentDashboard";
