@@ -20,13 +20,11 @@ import StudentDashboard from "./component/Dashboard/StudentDashboard";
 import EventRouting from "./component/Events/EventRouting";
 import UnlockCareer from "./component/Home_Body";
 import Feedback from "./component/Feedback/Feedback";
-import AddProblemStatement from "./component/Problemstatement/AddPS";
+// import AddProblemStatement from "./component/Problemstatement/AddPS";
 import StudentProfile from "./component/Student_Profile/student_profile";
-import BootcampPage from "./component/Bootcamp/Boot";
 import Compiler from "./component/Code_compiler/Compiler";
 import Activities from "./component/All_Activities/Activities";
 import Practice from "./component/Practice/Practice";
-
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -68,7 +66,7 @@ const App = () => {
               element={<Bootcamp_Management />}
             />
             <Route path="/add_new_bootcamp" element={<Add_New_Bootcamp />} />
-            <Route path="/problem-statement-management" element={AddProblemStatement />} />
+            {/* <Route path="/problem-statement-management" element={AddProblemStatement />} /> */}
             <Route
               path="/coordinator-management"
               element={<CoordinatorList />}
@@ -80,6 +78,7 @@ const App = () => {
           </Routes>
         </div>
         <Footer />
+       
         {showLogin && <MultiRoleLogin onLoginSuccess={handleLoginSuccess} />}
       </div>
     </Router>
