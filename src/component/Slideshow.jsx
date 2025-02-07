@@ -48,7 +48,7 @@ const Slideshow = ({ cards }) => {
         }}
         onTransitionEnd={handleTransitionEnd}
       >
-        <div className="w-1/3 flex-shrink-0 px-4 py-6 bg-white rounded-lg shadow-lg mx-2">
+        <div className="w-1/3 flex-shrink-0 p-6 bg-white rounded-xl shadow-[0px_4px_15px_rgba(255,100,0,0.8),_0px_6px_20px_rgba(255,150,0,0.8)] border border-gray-200 mx-2">
           <div className="flex justify-between items-center">
             <div className="text-left">
               <div className="text-2xl font-bold mb-2 text-gray-900">
@@ -87,7 +87,7 @@ const Slideshow = ({ cards }) => {
           return (
             <div
               key={index}
-              className="w-1/3 flex-shrink-0 px-4 py-6 bg-white rounded-lg shadow-lg mx-2"
+              className="w-1/3 flex-shrink-0 p-6 bg-white rounded-xl shadow-[0px_4px_15px_rgba(255,100,0,0.8),_0px_6px_20px_rgba(255,150,0,0.8)] border border-gray-200 mx-2"
             >
               <div className="flex justify-between items-center">
                 <div className="text-left">
@@ -120,7 +120,7 @@ const Slideshow = ({ cards }) => {
             </div>
           );
         })}
-        <div className="w-1/3 flex-shrink-0 px-4 py-6 bg-white rounded-lg shadow-lg mx-2">
+        <div className="w-1/3 flex-shrink-0 p-6 bg-white rounded-xl shadow-[0px_4px_15px_rgba(255,100,0,0.8),_0px_6px_20px_rgba(255,150,0,0.8)] border border-gray-200 mx-2">
           <div className="flex justify-between items-center">
             <div className="text-left">
               <div className="text-2xl font-bold mb-2 text-gray-900">

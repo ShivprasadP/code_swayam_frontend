@@ -30,7 +30,7 @@ const Navbar = ({ onLoginClick, user }) => {
           />
         </div>
         <ul className="hidden md:flex space-x-8 text-base font-medium text-gray-700">
-          <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[40px]">
+          <li className="hover:text-amber-500 transition-all duration-300 cursor-pointer ml-[20px]">
             <Link to="/">Home</Link>
           </li>
           {user && user.role === "Student" && (

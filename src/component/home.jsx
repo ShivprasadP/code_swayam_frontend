@@ -4,9 +4,7 @@ import Slideshow from "./Slideshow";
 import MultiRoleLogin from "./MultiRoleLogin";
 import UnlockCareer from "./Home_Body";
 
-
 const Home = () => {
-
   const [cards1, setCards1] = useState([]);
   const [cards2, setCards2] = useState([]);
 
@@ -31,27 +29,26 @@ const Home = () => {
   }, []);
 
   return (
-
     <>
-    <UnlockCareer/>
-  
-    <div id="home" className="container mx-auto p-4">
-      <div className="mb-12">
-        <h2 className="text-2xl font-semibold text-center mb-4 mt-[100px]">
-          Events
-        </h2>
-        <Slideshow cards={cards1} />
-      </div>
+      <UnlockCareer />
 
-      <div className="mb-12">
-        <h2 className="text-2xl font-semibold text-center mb-4">Bootcamp</h2>
-        <Slideshow cards={cards2} />
+      <div id="home" className="container mx-auto p-4">
+        <div className="mb-12 text-center">
+          <h2 className="text-4xl font-bold text-orange-600 mb-6 mt-16 drop-shadow-lg mb-8">
+            Exciting Events
+          </h2>
+          <Slideshow cards={cards1} />
+        </div>
+
+        <div className="mb-12 text-center">
+          <h2 className="text-4xl font-bold text-purple-600 mb-6 drop-shadow-lg mb-8">
+            Bootcamp Programs
+          </h2>
+          <Slideshow cards={cards2} />
+        </div>
       </div>
-    </div>
-   
     </>
   );
-
 };
 
 export default Home;
