@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const LoginForm = ({ loginData, setLoginData, handleLogin }) => (
   <div className="w-full md:w-1/2 flex flex-col items-center p-6 bg-transparent">
@@ -41,6 +41,14 @@ const LoginForm = ({ loginData, setLoginData, handleLogin }) => (
 const MultiRoleLogin = ({ onLoginSuccess }) => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state && location.state.errorMessage) {
+      toast.error(location.state.errorMessage);
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location.state, navigate]);
 
   const handleLogin = async () => {
     if (!loginData.email || !loginData.password) {

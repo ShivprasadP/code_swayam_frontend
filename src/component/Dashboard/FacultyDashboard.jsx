@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -7,6 +7,23 @@ import FacultyFeatures from "../Features/FacultyFeatures";
 
 const FacultyDashboard = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkUserSession = () => {
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      if (!user || user.role !== "Faculty") {
+        sessionStorage.removeItem("user");
+        navigate("/login", {
+          state: {
+            errorMessage: "Please log in as an faculty to access this page.",
+          },
+        });
+      }
+    };
+
+    checkUserSession();
+  }, [navigate]);
 
   useEffect(() => {
     const showToast = location.state?.showToast;

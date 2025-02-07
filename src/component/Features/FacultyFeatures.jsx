@@ -30,6 +30,20 @@ const allCategories = [
     color: "bg-gray-300",
     link: "/problem-statement-management",
   },
+  {
+    title: "Student Management",
+    description: "Manage Students",
+    icon: "👨",
+    color: "bg-green-300",
+    link: "/student-management",
+  },
+  {
+    title: "Test Case Management",
+    description: "Manage Test Cases",
+    icon: "📝",
+    color: "bg-yellow-300",
+    link: "/add-test-case",
+  },
 ];
 
 const FacultyFeatures = () => {
@@ -42,7 +56,9 @@ const FacultyFeatures = () => {
     } else {
       setCategories(
         allCategories.filter(
-          (category) => category.title === "Problem Statements"
+          (category) =>
+            category.title === "Problem Statements" ||
+            category.title === "Student Management"
         )
       );
     }

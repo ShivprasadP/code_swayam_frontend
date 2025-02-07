@@ -1,19 +1,16 @@
-import "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EventTable from "./EventTable";
 import EventDetails from "./EventDetails";
-import events from "./events";  // Import events data
 
-
-// This component need to  rendered on App.jsx 
-
+// This component needs to be rendered in App.jsx
 
 function EventRouting() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<EventTable events={events} />} />
-        <Route path="/event/:id" element={<EventDetails events={events} />} />
+        <Route path="/" element={<EventTable />} />
+        <Route path="/event/:id" element={<EventDetails />} />
       </Routes>
     </Router>
   );

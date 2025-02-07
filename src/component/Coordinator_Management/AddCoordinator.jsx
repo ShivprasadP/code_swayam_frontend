@@ -10,6 +10,22 @@ const AddCoordinator = () => {
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
+    const checkUserSession = () => {
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      if (!user || user.role !== "Admin") {
+        sessionStorage.removeItem("user");
+        navigate("/login", {
+          state: {
+            errorMessage: "Please log in as an admin to access this page.",
+          },
+        });
+      }
+    };
+
+    checkUserSession();
+  }, [navigate]);
+
+  useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(

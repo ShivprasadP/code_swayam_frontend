@@ -9,9 +9,7 @@ const Feedback = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Display success message after form submission
     setIsSubmitted(true);
-    // Clear the form after submission
     setName("");
     setEmail("");
     setFeedbackType("query");
@@ -21,17 +19,26 @@ const Feedback = () => {
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <div className="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold text-center text-amber-600 mb-6">Student Feedback</h2>
+        <h2 className="text-3xl font-bold text-center text-amber-600 mb-6">
+          Student Feedback
+        </h2>
 
         {isSubmitted ? (
           <div className="text-center text-emerald-600">
-            <h3 className="text-xl font-semibold">Thank you for your feedback!</h3>
-            <p>Your query has been submitted successfully. We will get back to you soon.</p>
+            <h3 className="text-xl font-semibold">
+              Thank you for your feedback!
+            </h3>
+            <p>
+              Your query has been submitted successfully. We will get back to
+              you soon.
+            </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-lg font-medium text-gray-700">Name</label>
+              <label className="block text-lg font-medium text-gray-700">
+                Name
+              </label>
               <input
                 type="text"
                 value={name}
@@ -42,7 +49,9 @@ const Feedback = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-lg font-medium text-gray-700">Email</label>
+              <label className="block text-lg font-medium text-gray-700">
+                Email
+              </label>
               <input
                 type="email"
                 value={email}
@@ -53,7 +62,9 @@ const Feedback = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-lg font-medium text-gray-700">Feedback Type</label>
+              <label className="block text-lg font-medium text-gray-700">
+                Feedback Type
+              </label>
               <select
                 value={feedbackType}
                 onChange={(e) => setFeedbackType(e.target.value)}
@@ -66,7 +77,9 @@ const Feedback = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-lg font-medium text-gray-700">Message</label>
+              <label className="block text-lg font-medium text-gray-700">
+                Message
+              </label>
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
