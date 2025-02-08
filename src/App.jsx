@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./component/Navbar";
-import ContactUs from "./component/ContactUs";
-import AboutUs from "./component/AboutUs";
+import ContactUs from "./component/contactus";
+import AboutUs from "./component/aboutus";
 import Home from "./component/Home";
 import Footer from "./component/Footer";
 import Feedback from "./component/Feedback/Feedback";
