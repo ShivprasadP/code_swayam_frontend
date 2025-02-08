@@ -97,10 +97,6 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-
-      <footer className="bg-gray-800 text-white py-6 text-center mt-12">
-        <p>© 2025 CodeSwayam. All rights reserved.</p>
-      </footer>
     </div>
   );
 };
