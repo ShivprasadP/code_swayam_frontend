@@ -19,7 +19,7 @@ import Add_New_Events from "./component/Event_Management/Add_New_Events";
 import Student_Request from "./component/Student_Request/Student_Request";
 import Bootcamp_Management from "./component/Bootcamp_Management/Bootcamp_Management";
 import Add_New_Bootcamp from "./component/Bootcamp_Management/Add_New_Bootcamp";
-import AddProblemStatement from "./component/ProblemStatement/AddProblemStatement";
+import AddProblemStatement from "./component/Problemstatement/AddProblemStatement";
 import Addtestcase from "./component/Add_TestCases/Addtestcase";
 
 import StudentList from "./component/StudentManagement/StudentList";
