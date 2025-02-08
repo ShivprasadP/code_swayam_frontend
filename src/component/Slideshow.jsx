@@ -32,6 +32,13 @@ const Slideshow = ({ cards }) => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "...";
+    }
+    return text;
+  };
+
   if (cards.length === 0) {
     return <div>No cards available</div>;
   }
@@ -48,7 +55,7 @@ const Slideshow = ({ cards }) => {
         }}
         onTransitionEnd={handleTransitionEnd}
       >
-        <div className="w-1/3 flex-shrink-0 p-6 bg-white rounded-xl shadow-[0px_4px_15px_rgba(255,100,0,0.8),_0px_6px_20px_rgba(255,150,0,0.8)] border border-gray-200 mx-2">
+        <div className="w-1/3 flex-shrink-0 p-6 bg-white rounded-xl shadow-lg border border-gray-200 mx-2">
           <div className="flex justify-between items-center">
             <div className="text-left">
               <div className="text-2xl font-bold mb-2 text-gray-900">
@@ -56,7 +63,7 @@ const Slideshow = ({ cards }) => {
               </div>
               <p className="text-gray-700">
                 <strong>Description:</strong>{" "}
-                {cards[cards.length - 1]?.description}
+                {truncateText(cards[cards.length - 1]?.description, 100)}
               </p>
               <p className="text-gray-700">
                 <strong>Date:</strong>{" "}
@@ -87,7 +94,7 @@ const Slideshow = ({ cards }) => {
           return (
             <div
               key={index}
-              className="w-1/3 flex-shrink-0 p-6 bg-white rounded-xl shadow-[0px_4px_15px_rgba(255,100,0,0.8),_0px_6px_20px_rgba(255,150,0,0.8)] border border-gray-200 mx-2"
+              className="w-1/3 flex-shrink-0 p-6 bg-white rounded-xl shadow-lg border border-gray-200 mx-2"
             >
               <div className="flex justify-between items-center">
                 <div className="text-left">
@@ -95,7 +102,8 @@ const Slideshow = ({ cards }) => {
                     {card.title}
                   </div>
                   <p className="text-gray-700">
-                    <strong>Description:</strong> {card.description}
+                    <strong>Description:</strong>{" "}
+                    {truncateText(card.description, 100)}
                   </p>
                   <p className="text-gray-700">
                     <strong>Date:</strong> {formatDate(card.date)}
@@ -120,14 +128,15 @@ const Slideshow = ({ cards }) => {
             </div>
           );
         })}
-        <div className="w-1/3 flex-shrink-0 p-6 bg-white rounded-xl shadow-[0px_4px_15px_rgba(255,100,0,0.8),_0px_6px_20px_rgba(255,150,0,0.8)] border border-gray-200 mx-2">
+        <div className="w-1/3 flex-shrink-0 p-6 bg-white rounded-xl shadow-lg border border-gray-200 mx-2">
           <div className="flex justify-between items-center">
             <div className="text-left">
               <div className="text-2xl font-bold mb-2 text-gray-900">
                 {cards[0]?.title}
               </div>
               <p className="text-gray-700">
-                <strong>Description:</strong> {cards[0]?.description}
+                <strong>Description:</strong>{" "}
+                {truncateText(cards[0]?.description, 100)}
               </p>
               <p className="text-gray-700">
                 <strong>Date:</strong> {formatDate(cards[0]?.date)}

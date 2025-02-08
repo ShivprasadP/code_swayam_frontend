@@ -141,6 +141,7 @@ const Add_New_Events = () => {
           >
             <option value="">Select Category</option>
             <option value="Regular">Regular</option>
+            <option value="Internship">Internship</option>
           </select>
           <button
             type="submit"

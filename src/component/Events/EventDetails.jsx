@@ -137,7 +137,7 @@ function EventDetails() {
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-gradient-to-b from-amber-500 to-orange-400 text-white"
             }`}
-            disabled={!event.status}
+            disabled={!event.status || !event.category === "Internship"}
           >
             Register Now
           </button>

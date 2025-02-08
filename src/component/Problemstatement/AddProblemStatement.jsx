@@ -37,6 +37,19 @@ function Input({ placeholder, name, value, onChange }) {
   );
 }
 
+function Textarea({ placeholder, name, value, onChange }) {
+  return (
+    <textarea
+      className="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-amber-500"
+      placeholder={placeholder}
+      name={name}
+      value={value}
+      onChange={onChange}
+      rows="4"
+    />
+  );
+}
+
 function Table({ children }) {
   return (
     <table className="w-full border-collapse border border-amber-300 shadow-md bg-orange-50">
@@ -66,6 +79,13 @@ function TableBody({ children }) {
 function TableCell({ children }) {
   return <td className="p-3 border border-amber-300">{children}</td>;
 }
+
+const truncateText = (text, maxLength) => {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + "...";
+  }
+  return text;
+};
 
 export default function AddProblemStatement() {
   const [problems, setProblems] = useState([]);
@@ -185,7 +205,7 @@ export default function AddProblemStatement() {
             value={problem.title}
             onChange={handleChange}
           />
-          <Input
+          <Textarea
             placeholder="Description"
             name="description"
             value={problem.description}
@@ -269,7 +289,7 @@ export default function AddProblemStatement() {
             {problems.map((p, index) => (
               <TableRow key={index}>
                 <TableCell>{p.title}</TableCell>
-                <TableCell>{p.description}</TableCell>
+                <TableCell>{truncateText(p.description, 100)}</TableCell>
                 <TableCell>{p.input}</TableCell>
                 <TableCell>{p.output}</TableCell>
                 <TableCell>{p.constraints}</TableCell>

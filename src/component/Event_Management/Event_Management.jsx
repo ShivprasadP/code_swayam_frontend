@@ -14,7 +14,11 @@ const EventManagement = () => {
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/events/category/Regular`
         );
-        setEventData(response.data);
+        const response1 = await axios.get(
+          `${import.meta.env.VITE_API_URL}/events/category/Internship`
+        );
+
+        setEventData([...response.data, ...response1.data]);
       } catch (error) {
         console.error("Error fetching events:", error);
       }

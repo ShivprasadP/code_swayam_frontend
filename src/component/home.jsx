@@ -11,15 +11,16 @@ const Home = () => {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response1 = await axios.get(
-          `${import.meta.env.VITE_API_URL}/events/category/Regular`
-        );
-        setCards1(response1.data);
+        const [response1, response2, response3] = await Promise.all([
+          axios.get(`${import.meta.env.VITE_API_URL}/events/category/Regular`),
+          axios.get(
+            `${import.meta.env.VITE_API_URL}/events/category/Internship`
+          ),
+          axios.get(`${import.meta.env.VITE_API_URL}/events/category/Bootcamp`),
+        ]);
 
-        const response2 = await axios.get(
-          `${import.meta.env.VITE_API_URL}/events/category/Bootcamp`
-        );
-        setCards2(response2.data);
+        setCards1([...response1.data, ...response2.data]);
+        setCards2(response3.data);
       } catch (error) {
         console.error("Error fetching cards:", error);
       }
@@ -35,7 +36,7 @@ const Home = () => {
       <div id="home" className="container mx-auto p-4">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold text-orange-600 mb-6 mt-16 drop-shadow-lg mb-8">
-            Exciting Events
+            Exciting Events and Internships
           </h2>
           <Slideshow cards={cards1} />
         </div>
